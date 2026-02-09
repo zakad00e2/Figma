@@ -66,7 +66,7 @@ export function LeadMagnet() {
               >
                 <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
                   <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border-2 border-white/20">
-                    <h3 className="text-2xl mb-6 text-right">ما ستحصلين عليه في الكتيب:</h3>
+                    <h3 className="text-2xl mb-6 text-right">: ما ستحصلين عليه في الكتيب </h3>
                     <div className="grid md:grid-cols-2 gap-4 mb-8 text-right">
                       {[
                         "جداول غذائية يومية",
@@ -91,8 +91,9 @@ export function LeadMagnet() {
                         size="lg"
                         className="bg-white text-emerald-700 hover:bg-emerald-50 px-8 py-6 text-lg rounded-xl flex-shrink-0"
                       >
-                        احصلي عليه الآن
                         <Download className="mr-2 h-5 w-5" />
+                        احصلي عليه الآن
+                        
                       </Button>
                       <Input
                         type="email"
@@ -104,7 +105,7 @@ export function LeadMagnet() {
                     </div>
 
                     <p className="text-sm text-emerald-100 mt-4 text-right">
-                      🔒 بياناتك آمنة معنا. لن نشارك بريدك الإلكتروني مع أي طرف ثالث.
+                      🔒 بياناتك آمنة معنا. لن نشارك بريدك الإلكتروني مع أي طرف ثالث
                     </p>
                   </div>
                 </form>

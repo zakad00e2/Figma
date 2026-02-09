@@ -22,11 +22,14 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { name: "الرئيسية", href: "#" },
-    { name: "من أنا", id: "about" },
-    { name: "خدماتي", id: "services" },
+   
+    
+    
     { name: "شهادات العملاء", id: "testimonials" },
-    { name: "الكتيب المجاني", id: "lead-magnet" }
+    { name: "الكتيب المجاني", id: "lead-magnet" },
+    { name: "خدماتي", id: "services" },
+    { name: "من أنا", id: "about" },
+     { name: "الرئيسية", href: "#" },
   ];
 
   return (
@@ -40,8 +43,21 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-10 md:px-20"> 
         <div className="flex items-center justify-between h-20">
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-stone-900"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+
           {/* CTA Button - Left */}
           <div className="hidden md:block">
             <Button
@@ -74,25 +90,13 @@ export function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-2"
           >
-            <span className={`text-xl font-bold transition-colors ${
+            {/* <span className={`text-xl font-bold transition-colors ${
               isScrolled ? "text-stone-900" : "text-stone-900"
             }`}>
               المدربة ميسم
-            </span>
-            <Heart className="w-6 h-6 text-emerald-600 fill-emerald-600" />
-          </button>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-stone-900"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            </span> */}
+            {/* <Heart className="w-6 h-6 text-emerald-600 fill-emerald-600" /> */}
+            <img className="w-12 h-12 object-contain" src="public/623743788_1958175435099315_4051113299859758212_n (1).png" alt="" />
           </button>
         </div>
       </div>

@@ -52,9 +52,137 @@ export function Consultation() {
     <section id="consultation" className="py-24 bg-gradient-to-b from-stone-50 to-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Info */}
+          {/* Right Side - Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {!isSubmitted ? (
+              <Card className="border-2 border-emerald-100 shadow-xl">
+                <CardHeader className="text-right bg-gradient-to-br from-emerald-50 to-white">
+                  <CardTitle className="text-2xl flex items-center gap-3 justify-end">
+                    <span>نموذج حجز الاستشارة</span>
+                    <Calendar className="w-6 h-6 text-emerald-600" />
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-8">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-2 text-right">
+                      <Label htmlFor="name" className="justify-end">* الاسم الكامل </Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="أدخلي اسمك الكامل"
+                        className="text-right  border-gray-300"
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2 text-right">
+                      <Label htmlFor="email" className="justify-end">* البريد الإلكتروني </Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="example@email.com"
+                        className="text-right  border-gray-300"
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2 text-right">
+                      <Label htmlFor="phone" className="justify-end">* رقم الهاتف </Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+966 XX XXX XXXX"
+                        className="text-right border-gray-300"
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2 text-right">
+                      <Label htmlFor="preferredDate" className="justify-end">الموعد المفضل (اختياري)</Label>
+                      <Input
+                        id="preferredDate"
+                        name="preferredDate"
+                        type="date"
+                        value={formData.preferredDate}
+                        onChange={handleChange}
+                        className="text-right border-gray-300"
+                      />
+                    </div>
+
+                    <div className="space-y-2 text-right">
+                      <Label htmlFor="message" className="justify-end">رسالتك (اختياري)</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="... أخبرينا عن أهدافك الصحية أو أي استفسارات لديك"
+                        className="text-right min-h-[120px] border-gray-300"
+                        rows={5}
+                      />
+                    </div>
+
+                    <Button 
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg rounded-xl"
+                    >
+                      <Send className="mr-2 h-5 w-5" />
+                      إرسال الطلب
+                      
+                    </Button>
+
+                    <p className="text-sm text-stone-500 text-center">
+                      بإرسال هذا النموذج، أنت توافقين على سياسة الخصوصية
+                    </p>
+                  </form>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="border-2 border-emerald-500 shadow-xl">
+                <CardContent className="p-12 text-center">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", duration: 0.5 }}
+                    className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6"
+                  >
+                    <CheckCircle2 className="w-12 h-12 text-emerald-600" />
+                  </motion.div>
+
+                  <h3 className="text-3xl mb-4 text-stone-900">تم استلام طلبك! 🎉</h3>
+                  <p className="text-xl text-stone-600 mb-6">
+                    شكراً لثقتك. سنتواصل معك خلال 24 ساعة لتأكيد موعد الاستشارة.
+                  </p>
+
+                  <Button
+                    onClick={() => setIsSubmitted(false)}
+                    variant="outline"
+                    className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50"
+                  >
+                    إرسال طلب آخر
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
+          </motion.div>
+
+          {/* Left Side - Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -98,7 +226,7 @@ export function Consultation() {
               ].map((benefit, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -125,133 +253,6 @@ export function Consultation() {
                 <div className="text-3xl">🔒</div>
               </div>
             </div>
-          </motion.div>
-
-          {/* Right Side - Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {!isSubmitted ? (
-              <Card className="border-2 border-emerald-100 shadow-xl">
-                <CardHeader className="text-right bg-gradient-to-br from-emerald-50 to-white">
-                  <CardTitle className="text-2xl flex items-center gap-3 justify-end">
-                    <span>نموذج حجز الاستشارة</span>
-                    <Calendar className="w-6 h-6 text-emerald-600" />
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-2 text-right">
-                      <Label htmlFor="name">الاسم الكامل *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="أدخلي اسمك الكامل"
-                        className="text-right"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2 text-right">
-                      <Label htmlFor="email">البريد الإلكتروني *</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="example@email.com"
-                        className="text-right"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2 text-right">
-                      <Label htmlFor="phone">رقم الهاتف *</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+966 XX XXX XXXX"
-                        className="text-right"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2 text-right">
-                      <Label htmlFor="preferredDate">الموعد المفضل (اختياري)</Label>
-                      <Input
-                        id="preferredDate"
-                        name="preferredDate"
-                        type="date"
-                        value={formData.preferredDate}
-                        onChange={handleChange}
-                        className="text-right"
-                      />
-                    </div>
-
-                    <div className="space-y-2 text-right">
-                      <Label htmlFor="message">رسالتك (اختياري)</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="أخبرينا عن أهدافك الصحية أو أي استفسارات لديك..."
-                        className="text-right min-h-[120px]"
-                        rows={5}
-                      />
-                    </div>
-
-                    <Button 
-                      type="submit"
-                      size="lg"
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg rounded-xl"
-                    >
-                      إرسال الطلب
-                      <Send className="mr-2 h-5 w-5" />
-                    </Button>
-
-                    <p className="text-sm text-stone-500 text-center">
-                      بإرسال هذا النموذج، أنت توافقين على سياسة الخصوصية
-                    </p>
-                  </form>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="border-2 border-emerald-500 shadow-xl">
-                <CardContent className="p-12 text-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", duration: 0.5 }}
-                    className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6"
-                  >
-                    <CheckCircle2 className="w-12 h-12 text-emerald-600" />
-                  </motion.div>
-
-                  <h3 className="text-3xl mb-4 text-stone-900">تم استلام طلبك! 🎉</h3>
-                  <p className="text-xl text-stone-600 mb-6">
-                    شكراً لثقتك. سنتواصل معك خلال 24 ساعة لتأكيد موعد الاستشارة.
-                  </p>
-
-                  <Button
-                    onClick={() => setIsSubmitted(false)}
-                    variant="outline"
-                    className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50"
-                  >
-                    إرسال طلب آخر
-                  </Button>
-                </CardContent>
-              </Card>
-            )}
           </motion.div>
         </div>
       </div>

@@ -6,30 +6,34 @@ export function Testimonials() {
   const testimonials = [
     {
       name: "سارة أحمد",
-      role: "أم لطفلين",
+      role: "مهتمة بنمط حياة صحي",
       image: "https://images.unsplash.com/photo-1573858129683-59f4d9c445d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwdHJhaW5pbmclMjB3b21hbiUyMHdlbGxuZXNzfGVufDF8fHx8MTc3MDMxODIzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      text: "ميسم كانت معي طوال فترة حملي الثاني. خبرتها كممرضة جعلتني أشعر بالأمان، وبرنامجها الرياضي ساعدني على الحفاظ على لياقتي. بعد الولادة، استعدت قوامي في وقت قياسي بفضل متابعتها المستمرة.",
+      text:`كثير مبسوطة من تقدمي هالشهر، كثير مرتاحة بالاكل وحبيت العلاقة الصحية الي بنيتها مع الاكل،
+وأكثر من هيك، بتشكرك ع البرنامج الي اعطتيني اياتو، كثير مرتاحة في، ومش حارمة حالي من اشي 
+بعد قدامي طريق طويل، بس كثير عم احب التغييرات الي عم تصير، ف شكرًا كثير `,
       rating: 5
     },
     {
       name: "ليلى محمد",
-      role: "حامل في الشهر السابع",
+      role: "مهتمة بنمط حياة صحي",
       image: "https://images.unsplash.com/photo-1561742139-4b0210a1894d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVnbmFudCUyMHdvbWFuJTIweW9nYSUyMHdlbGxuZXNzfGVufDF8fHx8MTc3MDMxODIzMnww&ixlib=rb-4.1.0&q=80&w=1080",
-      text: "كنت خائفة من زيادة الوزن خلال الحمل، لكن ميسم أعطتني خطة غذائية متوازنة ومليئة بكل ما يحتاجه جسمي وجنيني. الآن أشعر بالصحة والطاقة، ووزني تحت السيطرة. شكراً من القلب!",
+      text: `شكرًا ميسم عتشجيعكك وعالنظام والله كنت فترة طويلة معلقة بنفس الوزن شو ما اعمل ما اشوف غرام واحد ينزل
+كثير مبسوطة ان شاء الله بنكمل هيك واعمل ازيد رياضة عشان نزول ازيد`,
       rating: 5
     },
     {
       name: "نور حسين",
       role: "أم مرضعة",
       image: "https://images.unsplash.com/photo-1759173791710-659069f6184f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3RoZXIlMjBiYWJ5JTIwYnJlYXN0ZmVlZGluZyUyMHdlbGxuZXNzfGVufDF8fHx8MTc3MDMxODIzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      text: "كنت أعاني من نقص في إدرار الحليب، وشعرت بالإحباط. ميسم لم تقدم لي فقط نصائح تغذوية فعالة، بل أيضاً دعماً نفسياً كبيراً. الآن أستطيع إرضاع طفلي بشكل طبيعي وأنا في قمة السعادة.",
+      text: "مش بس النظام ساعدني، الأكل الصحي والنظيف قلّل السكر والدهون وزاد شرب المي. غير نزول الوزن، الفرق ببشرتي كان واضح جدًا: صارت أنضف، بتتنفس، بلا حبوب ولا احمرار. صرت أوعى أكتر شو يفوت على جسمي وحاسة براحة كبيرة.",
       rating: 5
     },
     {
       name: "هدى عبدالله",
       role: "مهتمة بنمط حياة صحي",
       image: "https://images.unsplash.com/photo-1650562075965-4940a2cfbfe4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGh5JTIwbnV0cml0aW9uJTIwZm9vZCUyMHByZWduYW5jeXxlbnwxfHx8fDE3NzAzMTgyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      text: "بعد سنوات من المحاولة، وجدت في ميسم المرشدة التي كنت أبحث عنها. برنامجها المتكامل غير حياتي بالكامل. تعلمت كيف أتمرن بشكل صحيح، وكيف أتغذى بذكاء. شكراً ميسم على كل شيء!",
+      text: `كثير مبسوطة الحمدلله وزني تحرك! كنت معلقة حرفيًا سنة كاملة على وزن واحد شو ما اعمل كان صعب ينزل كان في اشي غلط
+لما نظمت الوجبات حسب كيف عملتيلي البرنامج فرق معي كثير!! شكرًا كثير كثير`,
       rating: 5
     }
   ];
@@ -70,7 +74,7 @@ export function Testimonials() {
                 <CardContent className="p-8 text-right">
                   {/* Quote Icon */}
                   <div className="mb-6">
-                    <Quote className="w-12 h-12 text-emerald-200 mr-auto" />
+                    <Quote className="w-12 h-12 text-emerald-200 ml-auto" />
                   </div>
 
                   {/* Rating */}

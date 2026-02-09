@@ -6,13 +6,13 @@ export function Services() {
   const services = [
     {
       icon: <Stethoscope className="w-8 h-8" />,
-      title: "استشارات تمريضية متخصصة",
-      description: "متابعة طبية دقيقة وتقييم صحي شامل مبني على خبرة تمريضية عميقة",
+      title: "ورشات توعية صحية",
+      description: "تعزيز الوعي الصحي وفق ممارسات طبية موثوقة",
       color: "emerald",
       features: [
-        "تقييم الحالة الصحية الشاملة",
-        "متابعة العلامات الحيوية",
-        "إرشادات طبية موثوقة",
+        "شرح أساسيات نمط الحياة الصحي",
+        "ورشات مخصصة حسب الفئة (مرضى السكري، مدربون، أمهات)",
+        "مساحة للنقاش وطرح الأسئلة والتفاعل مع المشاركين",
         "تنسيق مع الفريق الطبي"
       ]
     },
@@ -22,10 +22,10 @@ export function Services() {
       description: "برامج تدريبية آمنة ومصممة خصيصاً لاحتياجاتك البدنية والصحية",
       color: "pink",
       features: [
-        "تمارين آمنة للحوامل",
-        "برامج لياقة ما بعد الولادة",
-        "تقوية عضلات الحوض",
-        "تمارين استعادة القوام"
+        "برامج تدريبية مخصّصة حسب الحالة الصحية",
+        "تمارين آمنة لآلام المفاصل والظهر",
+        "تحسين القوة والمرونة واللياقة العامة",
+        "	دعم الحركة وجودة الحياة اليومية"
       ]
     },
     {
@@ -36,7 +36,7 @@ export function Services() {
       features: [
         "خطط غذائية متكاملة",
         "تغذية الحامل الصحية",
-        "دعم إدرار الحليب",
+        "قائمة تسوق صحية",
         "إدارة الوزن الصحي"
       ]
     },
@@ -119,7 +119,7 @@ export function Services() {
               >
                 <Card className={`h-full border-2 ${colors.border} hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}>
                   <CardHeader className="text-right">
-                    <div className={`w-16 h-16 ${colors.icon} rounded-2xl flex items-center justify-center mb-4 mr-auto`}>
+                    <div className={`w-16 h-16 ${colors.icon} rounded-2xl flex items-center justify-center mb-4 ml-auto`}>
                       <div className="text-white">
                         {service.icon}
                       </div>
@@ -131,7 +131,7 @@ export function Services() {
                   </CardHeader>
                   <CardContent className="text-right">
                     <div className={`${colors.bg} p-6 rounded-xl`}>
-                      <h4 className="font-semibold text-stone-900 mb-4">ما تشمله الخدمة:</h4>
+                      <h4 className="font-semibold text-stone-900 mb-4">: ما تشمله الخدمة</h4>
                       <ul className="space-y-3">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center gap-3 justify-end">
@@ -161,8 +161,8 @@ export function Services() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="flex items-start gap-4 justify-end">
                 <div className="text-right">
-                  <h4 className="text-xl mb-2">نهج طبي متكامل</h4>
-                  <p className="text-emerald-100">خلفيتي التمريضية تضمن رعاية آمنة ومبنية على المعرفة الطبية</p>
+                  <h4 className="text-xl mb-2">نهج علمي مستدام</h4>
+                  <p className="text-emerald-100">بناء نمط حياة صحي طويل الأمد بعيدًا عن الحميات المؤقتة</p>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                   <Stethoscope className="w-6 h-6" />
@@ -171,8 +171,8 @@ export function Services() {
 
               <div className="flex items-start gap-4 justify-end">
                 <div className="text-right">
-                  <h4 className="text-xl mb-2">متابعة شخصية</h4>
-                  <p className="text-emerald-100">كل عميلة تحصل على خطة مخصصة تناسب احتياجاتها الفريدة</p>
+                  <h4 className="text-xl mb-2">خطط مخصّصة</h4>
+                  <p className="text-emerald-100">برامج مصمّمة حسب احتياجاتك وظروفك الشخصية</p>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                   <Heart className="w-6 h-6" />
@@ -181,8 +181,8 @@ export function Services() {
 
               <div className="flex items-start gap-4 justify-end">
                 <div className="text-right">
-                  <h4 className="text-xl mb-2">تخصص في فترات حرجة</h4>
-                  <p className="text-emerald-100">فهم عميق لاحتياجات الحامل والمرضع الجسدية والنفسية</p>
+                  <h4 className="text-xl mb-2">دعم مستمر</h4>
+                  <p className="text-emerald-100">متابعة وإشراف خطوة بخطوة لضمان أفضل النتائج</p>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                   <Users className="w-6 h-6" />

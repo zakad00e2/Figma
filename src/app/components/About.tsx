@@ -16,13 +16,13 @@ export function About() {
           >
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1724627560810-682135e5c51e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwcHJvZmVzc2lvbmFsJTIwd29tYW4lMjBhcmFiaWN8ZW58MXx8fHwxNzcwMzE4MjMxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                <img
+                  src="public/1a262b63-2643-4899-a27f-de0edb57658e.jpg"
                   alt="المدربة ميسم"
                   className="w-full h-[500px] object-cover"
                 />
               </div>
-              
+
               {/* Decorative Elements */}
               <div className="absolute -top-6 -left-6 w-24 h-24 bg-emerald-500 rounded-full opacity-20"></div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-pink-400 rounded-full opacity-20"></div>
@@ -46,22 +46,22 @@ export function About() {
             </h2>
 
             <p className="text-lg text-stone-600 leading-relaxed mb-6">
-              أنا ممرضة استشارية مع أكثر من عشر سنوات من الخبرة في الرعاية الصحية. تخصصت في مجالات 
-              النشاط البدني، التدريب الرياضي، والاستشارات التغذوية، مع تركيز خاص على احتياجات النساء 
-              الحوامل والمرضعات.
+              ممرضة مختصّة في النشاط البدني والصحة، أقدّم استشارات رياضية مخصّصة للأشخاص الذين يعانون من مشكلات صحية، بهدف تحسين جودة حياتهم بأمان وفعالية. كما أعمل كمستشارة تغذية ونمط حياة صحي قائمة على أسس علمية.
+              أقدّم إرشادًا غذائيًا للحوامل والمرضعات بما يتناسب مع احتياجاتهن الصحية في مختلف المراحل، مع خبرة عملية تتجاوز ثلاث سنوات في هذا المجال، وأسعى دائمًا لتقديم دعم موثوق ومتكامل  </p>
+            {/* <p className="text-lg text-stone-600 leading-relaxed mb-8">
+         أقدّم إرشادًا غذائيًا علميًا للحوامل والمرضعات، بما يتناسب مع احتياجاتهن الصحية في مختلف المراحل، مع مراعاة التغيّرات الجسدية والهرمونية لضمان صحة الأم والطفل. أمتلك خبرة عملية في هذا المجال لأكثر من ثلاث سنوات، وأسعى دائمًا لتقديم دعم موثوق ومبني على المعرفة الطبية.
+            </p> */}
+            <p className="text-lg text-stone-600 leading-relaxed mb-8">
+              بدأت رحلتي من شغفي العميق بتمكين النساء من العيش بصحة وحيوية. أؤمن أن كل امرأة تستحق دعمًا شاملًا خلال أهم مراحل حياتها — من الحمل والرضاعة، إلى بناء نمط حياة صحي ومستدام يعزّز التوازن الجسدي والنفسي.
             </p>
 
-            <p className="text-lg text-stone-600 leading-relaxed mb-8">
-              رحلتي بدأت من شغفي العميق بتمكين النساء من العيش بصحة وحيوية. أؤمن أن كل امرأة تستحق 
-              الدعم الشامل خلال أهم مراحل حياتها - من الحمل والرضاعة إلى بناء نمط حياة صحي مستدام.
-            </p>
 
             {/* Credentials */}
             <div className="grid md:grid-cols-2 gap-4 mb-8">
               <div className="bg-emerald-50 p-5 rounded-xl border-r-4 border-emerald-500">
                 <div className="flex items-center gap-3 justify-end">
                   <div className="text-right">
-                    <h4 className="font-semibold text-stone-900">ممرضة استشارية</h4>
+                    <h4 className="font-semibold text-stone-900">ممرضة مختصة بالنشاط البدني</h4>
                     <p className="text-sm text-stone-600">معتمدة ومرخصة</p>
                   </div>
                   <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -85,7 +85,7 @@ export function About() {
               <div className="bg-amber-50 p-5 rounded-xl border-r-4 border-amber-500">
                 <div className="flex items-center gap-3 justify-end">
                   <div className="text-right">
-                    <h4 className="font-semibold text-stone-900">استشارية تغذية</h4>
+                    <h4 className="font-semibold text-stone-900">مستشارة تغذية</h4>
                     <p className="text-sm text-stone-600">نمط حياة صحي</p>
                   </div>
                   <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -109,8 +109,8 @@ export function About() {
 
             <div className="bg-gradient-to-l from-emerald-50 to-transparent p-6 rounded-2xl border-r-4 border-emerald-500">
               <p className="text-lg text-stone-700 italic text-right">
-                "رسالتي هي أن أكون معكِ في كل خطوة من رحلتكِ، أن أوفر لكِ الدعم الطبي والعاطفي، 
-                وأن أساعدكِ على اكتشاف قوتكِ الداخلية وتحقيق أهدافكِ الصحية."
+                رسالتي هي أن أكون معكِ في كل خطوة من رحلتكِ، أن أوفر لكِ الدعم المهني والعاطفي،
+                وأن أساعدكِ على اكتشاف قوتكِ الداخلية وتحقيق أهدافكِ الصحية
               </p>
             </div>
           </motion.div>
