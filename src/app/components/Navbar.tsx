@@ -96,7 +96,7 @@ export function Navbar() {
               المدربة ميسم
             </span> */}
             {/* <Heart className="w-6 h-6 text-emerald-600 fill-emerald-600" /> */}
-            <img className="w-12 h-12 object-contain" src="public/623743788_1958175435099315_4051113299859758212_n (1).png" alt="" />
+            <img className="w-12 h-12 object-contain" src="/623743788_1958175435099315_4051113299859758212_n (1).png" alt="" />
           </button>
         </div>
       </div>

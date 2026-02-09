@@ -53,7 +53,7 @@ export function Footer() {
           {/* About */}
           <div className="text-right md:col-span-2">
             <div className="flex items-center gap-2 mb-6 justify-end">
-            <img  className="h-15 w-15" src="public/623743788_1958175435099315_4051113299859758212_n (1).png" alt="" />
+            <img  className="h-15 w-15" src="/623743788_1958175435099315_4051113299859758212_n (1).png" alt="" />
             </div>
             <p className="text-stone-600 leading-relaxed mb-6">
                استشارية تغذية ومدربة رياضة متخصصة 

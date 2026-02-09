@@ -17,7 +17,7 @@ export function About() {
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="public/1a262b63-2643-4899-a27f-de0edb57658e.jpg"
+                  src="/1a262b63-2643-4899-a27f-de0edb57658e.jpg"
                   alt="المدربة ميسم"
                   className="w-full h-[500px] object-cover"
                 />

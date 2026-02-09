@@ -89,7 +89,7 @@ export function Hero() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src="public/Gemini_Generated_Image_o76fnfo76fnfo76f.png"
+                src="/Gemini_Generated_Image_o76fnfo76fnfo76f.png"
                 alt="حياة صحية ومتوازنة"
                 className="w-full h-[600px] object-cover"
               />
