@@ -89,9 +89,12 @@ export function Hero() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src="/Gemini_Generated_Image_o76fnfo76fnfo76f.png"
+                src="/hero-image.jpg"
                 alt="حياة صحية ومتوازنة"
                 className="w-full h-[600px] object-cover"
+                loading="eager"
+                // @ts-ignore
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/30 to-transparent"></div>
             </div>
