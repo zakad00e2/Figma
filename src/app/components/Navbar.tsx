@@ -48,7 +48,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-stone-900"
+            className="cursor-pointer md:hidden p-2 text-stone-900"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -74,7 +74,7 @@ export function Navbar() {
               <button
                 key={index}
                 onClick={() => link.id ? scrollToSection(link.id) : window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className={`transition-colors ${
+                className={`cursor-pointer transition-colors ${
                   isScrolled 
                     ? "text-stone-700 hover:text-emerald-600" 
                     : "text-stone-900 hover:text-emerald-600"
@@ -85,19 +85,25 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Logo - Right */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2"
-          >
-            {/* <span className={`text-xl font-bold transition-colors ${
-              isScrolled ? "text-stone-900" : "text-stone-900"
-            }`}>
-              المدربة ميسم
-            </span> */}
-            {/* <Heart className="w-6 h-6 text-emerald-600 fill-emerald-600" /> */}
-            <img className="w-12 h-12 object-contain" src="/623743788_1958175435099315_4051113299859758212_n (1).png" alt="" />
-          </button>
+            {/* Logo - Right */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="cursor-pointer flex items-center gap-2"
+            >
+              <div
+                className="w-12 h-12 bg-[#059669]"
+                style={{
+                  maskImage: `url("/623743788_1958175435099315_4051113299859758212_n (1).png")`,
+                  maskSize: "contain",
+                  maskRepeat: "no-repeat",
+                  maskPosition: "center",
+                  WebkitMaskImage: `url("/623743788_1958175435099315_4051113299859758212_n (1).png")`,
+                  WebkitMaskSize: "contain",
+                  WebkitMaskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center",
+                }}
+              />
+            </button>
         </div>
       </div>
 
@@ -114,7 +120,7 @@ export function Navbar() {
               <button
                 key={index}
                 onClick={() => link.id ? scrollToSection(link.id) : window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="block w-full text-right text-stone-700 hover:text-emerald-600 py-2 transition-colors"
+                className="cursor-pointer block w-full text-right text-stone-700 hover:text-emerald-600 py-2 transition-colors"
               >
                 {link.name}
               </button>

@@ -70,7 +70,7 @@ export function Hero() {
                 <div className="text-sm text-stone-500">عميلة سعيدة</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-emerald-600">+10</div>
+                <div className="text-3xl font-bold text-emerald-600">+3</div>
                 <div className="text-sm text-stone-500">سنوات خبرة</div>
               </div>
               <div className="text-center">

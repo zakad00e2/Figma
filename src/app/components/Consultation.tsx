@@ -1,12 +1,13 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Calendar, Send, CheckCircle2 } from "lucide-react";
+import { Calendar, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import emailjs from "@emailjs/browser";
 
 export function Consultation() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ export function Consultation() {
     preferredDate: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -25,7 +27,7 @@ export function Consultation() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validation
@@ -34,8 +36,35 @@ export function Consultation() {
       return;
     }
 
-    // Simulate submission
-    setTimeout(() => {
+    setIsSubmitting(true);
+
+    try {
+      // Replace these with your actual EmailJS credentials
+      // Get them from: https://dashboard.emailjs.com/admin
+      const SERVICE_ID = "service_wd74yvd";
+      const TEMPLATE_ID = "template_ai41ffb";
+      const PUBLIC_KEY = "rtIJZZgv3Y-kEVttE";
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          to_name: "ميسم", // Name of the person receiving the email
+          
+          // المتغيرات لملء حقول القالب بناءً على الصورة
+          name: formData.name,       // For {{name}} in Subject/From Name
+          email: formData.email,     // For {{email}} in Reply To
+          
+          from_name: formData.name,  // Fallback
+          from_email: formData.email,// Fallback
+          
+          phone: formData.phone,     // For {{phone}}
+          message: formData.message, // For {{message}}
+          preferred_date: formData.preferredDate,
+        },
+        PUBLIC_KEY
+      );
+
       setIsSubmitted(true);
       toast.success("تم إرسال طلبك بنجاح! سنتواصل معك قريباً");
       setFormData({
@@ -45,7 +74,13 @@ export function Consultation() {
         message: "",
         preferredDate: ""
       });
-    }, 500);
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      const errorMessage = error?.text || error?.message || "حدث خطأ غير معروف";
+      toast.error(`حدث خطأ أثناء الإرسال: ${errorMessage}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -138,11 +173,20 @@ export function Consultation() {
                     <Button 
                       type="submit"
                       size="lg"
+                      disabled={isSubmitting}
                       className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg rounded-xl"
                     >
-                      <Send className="mr-2 h-5 w-5" />
-                      إرسال الطلب
-                      
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          جاري الإرسال...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-5 w-5" />
+                          إرسال الطلب
+                        </>
+                      )}
                     </Button>
 
                     <p className="text-sm text-stone-500 text-center">
