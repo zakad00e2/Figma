@@ -86,7 +86,7 @@ export function Testimonials() {
 
                   {/* Testimonial Text */}
                   <p className="text-stone-700 text-lg leading-relaxed mb-8">
-                    "{testimonial.text}"
+                    {testimonial.text}
                   </p>
 
                   {/* Author Info */}

@@ -116,7 +116,7 @@ export function Navbar() {
           className="md:hidden bg-white border-t border-stone-200"
         >
           <div className="container mx-auto px-4 py-6 space-y-4">
-            {navLinks.map((link, index) => (
+            {[...navLinks].reverse().map((link, index) => (
               <button
                 key={index}
                 onClick={() => link.id ? scrollToSection(link.id) : window.scrollTo({ top: 0, behavior: 'smooth' })}

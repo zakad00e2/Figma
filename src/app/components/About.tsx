@@ -3,7 +3,7 @@ import { Heart, Award, Users, Shield } from "lucide-react";
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image Side */}
@@ -17,9 +17,9 @@ export function About() {
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/1a262b63-2643-4899-a27f-de0edb57658e.jpg"
+                  src="/WhatsApp Image 2026-02-10 at 9.19.05 PM.jpeg"
                   alt="المدربة ميسم"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[650px] object-cover object-top"
                 />
               </div>
 
@@ -37,8 +37,10 @@ export function About() {
             transition={{ duration: 0.6 }}
             className="order-1 lg:order-2 text-right"
           >
-            <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-medium">من أنا؟</span>
+            <div className="flex justify-center lg:justify-end mb-6">
+              <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full">
+                <span className="text-sm font-medium">من أنا؟</span>
+              </div>
             </div>
 
             <h2 className="text-4xl md:text-5xl mb-6 text-stone-900">
@@ -46,13 +48,18 @@ export function About() {
             </h2>
 
             <p className="text-lg text-stone-600 leading-relaxed mb-6">
+
+
+
+
               ممرضة مختصّة في النشاط البدني والصحة، أقدّم استشارات رياضية مخصّصة للأشخاص الذين يعانون من مشكلات صحية، بهدف تحسين جودة حياتهم بأمان وفعالية. كما أعمل كمستشارة تغذية ونمط حياة صحي قائمة على أسس علمية.
-              أقدّم إرشادًا غذائيًا للحوامل والمرضعات بما يتناسب مع احتياجاتهن الصحية في مختلف المراحل، مع خبرة عملية تتجاوز ثلاث سنوات في هذا المجال، وأسعى دائمًا لتقديم دعم موثوق ومتكامل  </p>
-            {/* <p className="text-lg text-stone-600 leading-relaxed mb-8">
-         أقدّم إرشادًا غذائيًا علميًا للحوامل والمرضعات، بما يتناسب مع احتياجاتهن الصحية في مختلف المراحل، مع مراعاة التغيّرات الجسدية والهرمونية لضمان صحة الأم والطفل. أمتلك خبرة عملية في هذا المجال لأكثر من ثلاث سنوات، وأسعى دائمًا لتقديم دعم موثوق ومبني على المعرفة الطبية.
-            </p> */}
+              أقدّم إرشادًا غذائيًا للحوامل والمرضعات بما يتناسب مع احتياجاتهن الصحية في مختلف المراحل، مع خبرة عملية تتجاوز ثلاث سنوات في هذا المجال، وأسعى دائمًا لتقديم دعم موثوق ومتكامل
+          . بدأت رحلتي من شغفي العميق بتمكين النساء من العيش بصحة وحيوية. أؤمن أن كل امرأة تستحق دعمًا شاملًا خلال أهم مراحل حياتها — من الحمل والرضاعة، إلى بناء نمط حياة صحي ومستدام يعزّز التوازن الجسدي والنفسي
+            </p>
+
+
+
             <p className="text-lg text-stone-600 leading-relaxed mb-8">
-              بدأت رحلتي من شغفي العميق بتمكين النساء من العيش بصحة وحيوية. أؤمن أن كل امرأة تستحق دعمًا شاملًا خلال أهم مراحل حياتها — من الحمل والرضاعة، إلى بناء نمط حياة صحي ومستدام يعزّز التوازن الجسدي والنفسي.
             </p>
 
 

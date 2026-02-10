@@ -93,6 +93,7 @@ export function Consultation() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="order-2 lg:order-1"
           >
             {!isSubmitted ? (
               <Card className="border-2 border-emerald-100 shadow-xl">
@@ -230,7 +231,7 @@ export function Consultation() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-right"
+            className="text-right order-1 lg:order-2"
           >
             <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6">
               <span className="text-sm font-medium">احجزي استشارتك</span>
