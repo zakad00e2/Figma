@@ -3,7 +3,7 @@ import { Heart, Award, Users, Shield } from "lucide-react";
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
+    <section id="about" aria-label="من أنا - المدربة ميسم" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image Side */}
@@ -18,8 +18,12 @@ export function About() {
               <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src="/WhatsApp Image 2026-02-10 at 9.19.05 PM.jpeg"
-                  alt="المدربة ميسم"
+                  alt="المدربة ميسم - استشارية تغذية ومدربة رياضة متخصصة في صحة المرأة"
                   className="w-full h-[650px] object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="650"
                 />
               </div>
 

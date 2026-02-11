@@ -39,7 +39,7 @@ export function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-white">
+    <section id="testimonials" aria-label="شهادات وآراء العملاء" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -98,8 +98,12 @@ export function Testimonials() {
                     <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-emerald-100">
                       <img 
                         src={testimonial.image} 
-                        alt={testimonial.name}
+                        alt={`شهادة ${testimonial.name} - ${testimonial.role}`}
                         className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        width="56"
+                        height="56"
                       />
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-import { Heart, Mail, Phone, MapPin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 
 // Custom TikTok Icon
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -30,12 +30,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-stone-100 text-stone-900 pt-16 pb-8">
+    <footer role="contentinfo" aria-label="التذييل" className="bg-stone-100 text-stone-900 pt-16 pb-8">
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Contact Info */}
-          <div className="text-right">
+          {/* Contact Info - ثالث على الموبايل، أول على الشاشات الكبيرة */}
+          <div className="text-right order-3 md:order-1">
             <h4 className="text-lg font-semibold mb-6 text-emerald-600">تواصلي معي</h4>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 justify-end">
@@ -54,8 +54,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links */}
-          <div className="text-right">
+          {/* Quick Links - ثاني على الموبايل والشاشات الكبيرة */}
+          <div className="text-right order-2 md:order-2">
             <h4 className="text-lg font-semibold mb-6 text-emerald-600">روابط سريعة</h4>
             <ul className="space-y-3">
               {[
@@ -77,8 +77,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* About */}
-          <div className="text-right md:col-span-2">
+          {/* About - أول على الموبايل، ثالث على الشاشات الكبيرة */}
+          <div className="text-right md:col-span-2 order-1 md:order-3">
             <div className="flex items-center gap-2 mb-6 justify-end">
               <div
                 className="w-16 h-16 bg-[#059669]"

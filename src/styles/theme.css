@@ -127,6 +127,7 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
 
   /**
@@ -137,6 +138,7 @@
   html {
     font-size: var(--font-size);
     font-family: var(--font-family);
+    overflow-x: hidden;
   }
 
   h1 {
@@ -180,4 +182,22 @@
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
   }
+}
+/* تخصيص شكل إشعارات Sonner ليتوافق مع تصميم الموقع */
+[data-sonner-toaster] [data-sonner-toast] {
+  font-family: 'Tajawal', sans-serif !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="success"] {
+  background: #ecfdf5 !important;
+  color: #047857 !important;
+  border: 1px solid #a7f3d0 !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="error"] {
+  background: #fef2f2 !important;
+  color: #b91c1c !important;
+  border: 1px solid #fecaca !important;
 }

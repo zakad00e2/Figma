@@ -8,7 +8,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-pink-50">
+    <section aria-label="القسم الرئيسي" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-pink-50">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -90,9 +90,12 @@ export function Hero() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img 
                 src="/hero-image.jpg"
-                alt="حياة صحية ومتوازنة"
+                alt="ميسم - استشارية تغذية ومدربة رياضة - رحلتك نحو حياة صحية متوازنة"
                 className="w-full h-[600px] object-cover"
                 loading="eager"
+                decoding="async"
+                width="600"
+                height="600"
                 // @ts-ignore
                 fetchPriority="high"
               />

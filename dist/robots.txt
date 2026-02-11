@@ -1,0 +1,11 @@
+# robots.txt for withmaysam.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://withmaysam.com/sitemap.xml
+
+# Block access to development files
+Disallow: /src/
+Disallow: *.tsx
+Disallow: *.ts

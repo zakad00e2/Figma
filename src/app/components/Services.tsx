@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Activity, Apple, Heart, Baby, Dumbbell, Salad, Stethoscope, Users } from "lucide-react";
+import { Activity, Apple, Heart, Baby, Stethoscope, Users } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 export function Services() {
@@ -37,7 +37,7 @@ export function Services() {
         "خطط غذائية متكاملة",
         "تغذية الحامل الصحية",
         "قائمة تسوق صحية",
-        "إدارة الوزن الصحي"
+        "متابعة بشكل يومي"
       ]
     },
     {
@@ -47,7 +47,7 @@ export function Services() {
       color: "rose",
       features: [
         "مرافقة كاملة خلال الحمل",
-        "تحضير للولادة",
+        "برامج تغذية للحوامل والمرضعة",
         "دعم الرضاعة الطبيعية",
         "استعادة الصحة بعد الولادة"
       ]
@@ -82,7 +82,7 @@ export function Services() {
   };
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-stone-50 to-white">
+    <section id="services" aria-label="خدماتي الصحية" className="py-24 bg-gradient-to-b from-stone-50 to-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

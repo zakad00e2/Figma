@@ -84,7 +84,7 @@ export function Consultation() {
   };
 
   return (
-    <section id="consultation" className="py-24 bg-gradient-to-b from-stone-50 to-white">
+    <section id="consultation" aria-label="حجز استشارة مجانية" className="py-24 bg-gradient-to-b from-stone-50 to-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Right Side - Form */}
@@ -198,7 +198,7 @@ export function Consultation() {
               </Card>
             ) : (
               <Card className="border-2 border-emerald-500 shadow-xl">
-                <CardContent className="p-12 text-center">
+                <CardContent className="p-12 py-24 text-center">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
@@ -208,7 +208,7 @@ export function Consultation() {
                     <CheckCircle2 className="w-12 h-12 text-emerald-600" />
                   </motion.div>
 
-                  <h3 className="text-3xl mb-4 text-stone-900">تم استلام طلبك! 🎉</h3>
+                  <h3 className="text-3xl mb-4 text-stone-900">تم استلام طلبك!</h3>
                   <p className="text-xl text-stone-600 mb-6">
                     شكراً لثقتك. سنتواصل معك خلال 24 ساعة لتأكيد موعد الاستشارة.
                   </p>
