@@ -31,12 +31,12 @@ export function Hero() {
               <span className="text-sm">معكِ في كل خطوة</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl mb-6 text-stone-900 leading-tight">
+            <h1 className="text-4xl md:text-6xl my-15 lg:text-7xl  text-stone-900 leading-tight">
               رحلتكِ نحو
               <span className="text-emerald-600 block mt-2">حياة صحية متوازنة</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-stone-600 mb-8 leading-relaxed">
+            <p className=" md:text-2xl text-stone-600 mb-8 leading-relaxed">
               أنا <span className="text-emerald-600 font-semibold">ميسم</span>،  استشارية تغذية ومدربة رياضة متخصصة 
               في مرافقة النساء، في رحلتهن نحو الصحة والعافية
             </p>
