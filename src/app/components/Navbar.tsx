@@ -26,7 +26,6 @@ export function Navbar() {
     
     
     { name: "شهادات العملاء", id: "testimonials" },
-    { name: "الكتيب المجاني", id: "lead-magnet" },
     { name: "خدماتي", id: "services" },
     { name: "من أنا", id: "about" },
      { name: "الرئيسية", href: "#" },
