@@ -31,7 +31,7 @@ export function Hero() {
               <span className="text-sm">معكِ في كل خطوة</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl my-15 lg:text-7xl  text-stone-900 leading-tight">
+            <h1 className="text-4xl md:text-6xl my-15 md:my-4 md:mt-0 lg:text-7xl  text-stone-900 leading-tight">
               رحلتكِ نحو
               <span className="text-emerald-600 block mt-2">حياة صحية متوازنة</span>
             </h1>
