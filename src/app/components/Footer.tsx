@@ -48,7 +48,7 @@ export function Footer() {
                 <Phone className="w-5 h-5 text-emerald-600 flex-shrink-0" />
               </li>
               <li className="flex items-start gap-3 justify-end">
-                <span className="text-stone-600">فلسطين ، سخنين</span>
+                <span className="text-stone-600"> سخنين</span>
                 <MapPin className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-1" />
               </li>
             </ul>
@@ -164,7 +164,7 @@ export function Footer() {
             
             <div className="text-center">
               <p>
-                © {currentYear} المدربة ميسم. جميع الحقوق محفوظة.
+                © {currentYear}  جميع الحقوق محفوظة  المدربة ميسم.
               </p>
              
             </div>
