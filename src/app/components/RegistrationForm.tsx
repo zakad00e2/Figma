@@ -189,7 +189,7 @@ export default function RegistrationForm() {
     message += `6) حساسية أو عدم تحمل للطعام: ${q6}\n` + (q6 === 'نعم' ? `التفاصيل: ${q6Details}\n\n` : '\n');
 
     message += `*النشاط البدني:*\n`;
-    message += `10) هل تمارس رياضة: ${q10}\n` + (q10 === 'نعم' ? `التفاصيل: ${q10Details}\n\n` : '\n');
+    message += `10) هل تمارس رياضة: ${q10}\n` + (q10 === 'نعم' ? `كم مرة في الأسبوع: ${q10Details}\n\n` : '\n');
 
     message += `*التفضيلات الغذائية:*\n`;
     message += `11) هل لديك تفضيلات غذائية: ${q11}\n`;
@@ -397,13 +397,85 @@ export default function RegistrationForm() {
             <section className="space-y-6">
               <h3 className="text-xl font-bold border-b border-gray-200 pb-2 text-gray-800">النشاط البدني والتغذية</h3>
               
-              <YesNoQuestion 
-                id="q10" 
-                label="10. هل تمارس أي رياضة أو أي نوع نشاط جسدي؟" 
-                valueKey="q10" 
-                detailsKey="q10Details" formData={formData} handleChange={handleChange} handleRadioChange={handleRadioChange} preventRadioFocus={preventRadioFocus} 
-                detailsLabel="اذكر النوع، وكم مرة في الأسبوع، وأوقات الممارسة:" 
-              />
+              <div className="space-y-3 mb-6 border-b border-gray-200 pb-4">
+                <Label className="text-base font-semibold text-gray-800">10. هل تمارس أي رياضة أو أي نوع نشاط جسدي؟</Label>
+                <div className="flex gap-3">
+                  <label
+                    className="flex-1 relative cursor-pointer"
+                    htmlFor="q10-yes"
+                    onMouseDown={preventRadioFocus}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleRadioChange('q10', 'نعم');
+                    }}
+                  >
+                    <input
+                      type="radio"
+                      id="q10-yes"
+                      name="q10"
+                      value="نعم"
+                      checked={formData.q10 === 'نعم'}
+                      onChange={(e) => handleRadioChange('q10', e.target.value)}
+                      className="peer sr-only"
+                      tabIndex={-1}
+                    />
+                    <div className="flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-3 hover:bg-gray-50 peer-checked:border-stone-400 peer-checked:bg-stone-100 peer-checked:text-stone-800 transition-all font-medium">
+                      نعم
+                    </div>
+                  </label>
+                  
+                  <label
+                    className="flex-1 relative cursor-pointer"
+                    htmlFor="q10-no"
+                    onMouseDown={preventRadioFocus}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleRadioChange('q10', 'لا');
+                    }}
+                  >
+                    <input
+                      type="radio"
+                      id="q10-no"
+                      name="q10"
+                      value="لا"
+                      checked={formData.q10 === 'لا'}
+                      onChange={(e) => handleRadioChange('q10', e.target.value)}
+                      className="peer sr-only"
+                      tabIndex={-1}
+                    />
+                    <div className="flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-3 hover:bg-gray-50 peer-checked:border-slate-400 peer-checked:bg-slate-100 peer-checked:text-slate-800 transition-all font-medium">
+                      لا
+                    </div>
+                  </label>
+                </div>
+
+                <AnimatePresence initial={false}>
+                  {formData.q10 === 'نعم' && (
+                    <motion.div
+                      key="q10-details"
+                      initial={{ opacity: 0, height: 0, y: -8 }}
+                      animate={{ opacity: 1, height: 'auto', y: 0 }}
+                      exit={{ opacity: 0, height: 0, y: -8 }}
+                      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-4 space-y-3">
+                        <Label className="text-sm text-gray-600 mb-1 block">كم مرة في الأسبوع؟</Label>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                          {['1-2 مرات', '3-4 مرات', '5-7 مرات'].map((option) => (
+                            <label key={option} className="relative cursor-pointer" onMouseDown={preventRadioFocus} onClick={(e) => { e.preventDefault(); handleRadioChange('q10Details', option); }}>
+                              <input type="radio" name="q10Details" value={option} checked={formData.q10Details === option} onChange={(e) => handleRadioChange('q10Details', e.target.value)} className="peer sr-only" tabIndex={-1} />
+                              <div className="flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-3 hover:bg-gray-50 peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:text-primary transition-all font-medium text-sm">
+                                {option}
+                              </div>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <div className="space-y-3 mb-6 border-b border-gray-200 pb-4">
                 <Label className="text-base font-semibold text-gray-800">11. هل لديك أي تفضيلات للأطعمة؟</Label>
