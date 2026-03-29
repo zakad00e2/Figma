@@ -21,6 +21,28 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const navigateTo = (id?: string) => {
+    const isHomePage = window.location.pathname === "/";
+    const targetUrl = id ? `/#${id}` : "/";
+
+    if (!isHomePage) {
+      window.history.pushState({}, "", targetUrl);
+      window.dispatchEvent(new Event("app:navigate"));
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    if (id) {
+      window.history.replaceState({}, "", targetUrl);
+      scrollToSection(id);
+      return;
+    }
+
+    window.history.replaceState({}, "", "/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsMobileMenuOpen(false);
+  };
+
   const navLinks = [
    
     
@@ -62,7 +84,7 @@ export function Navbar() {
           {/* CTA Button - Left */}
           <div className="hidden md:block">
             <Button
-              onClick={() => scrollToSection("consultation")}
+              onClick={() => navigateTo("consultation")}
               className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl"
             >
               احجزي استشارة مجانية
@@ -74,7 +96,7 @@ export function Navbar() {
             {navLinks.map((link, index) => (
               <button
                 key={index}
-                onClick={() => link.id ? scrollToSection(link.id) : window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => navigateTo(link.id)}
                 className={`cursor-pointer transition-colors ${
                   isScrolled 
                     ? "text-stone-700 hover:text-emerald-600" 
@@ -88,7 +110,7 @@ export function Navbar() {
 
             {/* Logo - Right */}
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() => navigateTo()}
               className="cursor-pointer flex items-center gap-2"
             >
               <div
@@ -120,14 +142,14 @@ export function Navbar() {
             {[...navLinks].reverse().map((link, index) => (
               <button
                 key={index}
-                onClick={() => link.id ? scrollToSection(link.id) : window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => navigateTo(link.id)}
                 className="cursor-pointer block w-full text-right text-stone-700 hover:text-emerald-600 py-2 transition-colors"
               >
                 {link.name}
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("consultation")}
+              onClick={() => navigateTo("consultation")}
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl"
             >
               احجزي استشارة مجانية

@@ -393,23 +393,23 @@ export default function RegistrationForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="wakeTime">وقت الاستيقاظ</Label>
-                  <Input type="time" id="wakeTime" name="wakeTime" value={formData.wakeTime} onChange={handleChange} className="border border-gray-300 focus-visible:ring-primary/15" />
+                  <Input type="time" dir="ltr" id="wakeTime" name="wakeTime" value={formData.wakeTime} onChange={handleChange} className="w-full min-w-[150px] h-12 text-center text-lg font-medium border border-gray-300 focus-visible:ring-primary/15 appearance-none" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="sleepTime">وقت النوم</Label>
-                  <Input type="time" id="sleepTime" name="sleepTime" value={formData.sleepTime} onChange={handleChange} className="border border-gray-300 focus-visible:ring-primary/15" />
+                  <Input type="time" dir="ltr" id="sleepTime" name="sleepTime" value={formData.sleepTime} onChange={handleChange} className="w-full min-w-[150px] h-12 text-center text-lg font-medium border border-gray-300 focus-visible:ring-primary/15 appearance-none" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="breakfastTime">وقت الفطور</Label>
-                  <Input type="time" id="breakfastTime" name="breakfastTime" value={formData.breakfastTime} onChange={handleChange} className="border border-gray-300 focus-visible:ring-primary/15" />
+                  <Input type="time" dir="ltr" id="breakfastTime" name="breakfastTime" value={formData.breakfastTime} onChange={handleChange} className="w-full min-w-[150px] h-12 text-center text-lg font-medium border border-gray-300 focus-visible:ring-primary/15 appearance-none" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="lunchTime">وقت الغداء</Label>
-                  <Input type="time" id="lunchTime" name="lunchTime" value={formData.lunchTime} onChange={handleChange} className="border border-gray-300 focus-visible:ring-primary/15" />
+                  <Input type="time" dir="ltr" id="lunchTime" name="lunchTime" value={formData.lunchTime} onChange={handleChange} className="w-full min-w-[150px] h-12 text-center text-lg font-medium border border-gray-300 focus-visible:ring-primary/15 appearance-none" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="dinnerTime">وقت العشاء</Label>
-                  <Input type="time" id="dinnerTime" name="dinnerTime" value={formData.dinnerTime} onChange={handleChange} className="border border-gray-300 focus-visible:ring-primary/15" />
+                  <Input type="time" dir="ltr" id="dinnerTime" name="dinnerTime" value={formData.dinnerTime} onChange={handleChange} className="w-full min-w-[150px] h-12 text-center text-lg font-medium border border-gray-300 focus-visible:ring-primary/15 appearance-none" />
                 </div>
               </div>
             </section>

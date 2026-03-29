@@ -20,10 +20,34 @@ export default function App() {
   const [path, setPath] = useState(window.location.pathname);
 
   useEffect(() => {
-    const handlePopState = () => setPath(window.location.pathname);
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    const syncRoute = () => {
+      setPath(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", syncRoute);
+    window.addEventListener("app:navigate", syncRoute);
+
+    return () => {
+      window.removeEventListener("popstate", syncRoute);
+      window.removeEventListener("app:navigate", syncRoute);
+    };
   }, []);
+
+  useEffect(() => {
+    if (path === "/register") {
+      return;
+    }
+
+    const targetId = window.location.hash.replace("#", "");
+
+    if (!targetId) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+    });
+  }, [path]);
 
   if (path === '/register') {
     return (
