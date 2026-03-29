@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { AnimatePresence, motion } from 'motion/react';
+import emailjs from '@emailjs/browser';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { toast } from 'sonner';
 
 const WHATSAPP_NUMBER = "972508024998"; // ضَع الرقم هنا بدون علامة زائد، مثال: 966500000000
+
+const SERVICE_ID = "service_wd74yvd";
+const TEMPLATE_ID = "template_ai41ffb";
+const PUBLIC_KEY = "rtIJZZgv3Y-kEVttE";
+const REGISTRATION_EMAIL = "registration-form@example.com";
 
 function YesNoQuestion({
   id,
@@ -138,6 +144,7 @@ export default function RegistrationForm() {
     femalePeriods: '',
     femalePregnancy: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -152,7 +159,7 @@ export default function RegistrationForm() {
     e.preventDefault();
   };
 
-  const buildWhatsAppMessage = () => {
+  const buildRegistrationMessage = () => {
     const {
       name, phone, age, height, weight, gender, goal,
       q1, q1Details, q2, q2Details, q3, q3Details,
@@ -205,10 +212,37 @@ export default function RegistrationForm() {
       message += `- حمل أو رضاعة: ${femalePregnancy}\n`;
     }
 
-    return encodeURIComponent(message);
+    return message;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      phone: '',
+      age: '',
+      height: '',
+      weight: '',
+      gender: 'ط°ظƒط±',
+      goal: 'ط§ظƒطھط³ط§ط¨ ظˆط²ظ†',
+      q1: '', q1Details: '',
+      q2: '', q2Details: '',
+      q3: '', q3Details: '',
+      q4: '', q4Details: '',
+      q5: '', q5Details: '',
+      q6: '', q6Details: '',
+      q10: '', q10Details: '',
+      q11: '', q11Like: '', q11Dislike: '',
+      wakeTime: '',
+      sleepTime: '',
+      breakfastTime: '',
+      lunchTime: '',
+      dinnerTime: '',
+      femalePeriods: '',
+      femalePregnancy: ''
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Simple validation
@@ -222,6 +256,69 @@ export default function RegistrationForm() {
     window.open(whatsappUrl, '_blank');
   };
 
+  const buildWhatsAppMessage = buildRegistrationMessage;
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.phone || !formData.age) {
+      toast.error("يرجى تعبئة البيانات الأساسية المطلوبة قبل الإرسال.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          to_name: "Maysam",
+          name: formData.name,
+          email: REGISTRATION_EMAIL,
+          from_name: formData.name,
+          from_email: REGISTRATION_EMAIL,
+          phone: formData.phone,
+          preferred_date: "Registration form",
+          message: buildRegistrationMessage(),
+        },
+        PUBLIC_KEY
+      );
+
+      setFormData((current) => ({
+        ...current,
+        name: '',
+        phone: '',
+        age: '',
+        height: '',
+        weight: '',
+        q1: '', q1Details: '',
+        q2: '', q2Details: '',
+        q3: '', q3Details: '',
+        q4: '', q4Details: '',
+        q5: '', q5Details: '',
+        q6: '', q6Details: '',
+        q10: '', q10Details: '',
+        q11: '', q11Like: '', q11Dislike: '',
+        wakeTime: '',
+        sleepTime: '',
+        breakfastTime: '',
+        lunchTime: '',
+        dinnerTime: '',
+        femalePeriods: '',
+        femalePregnancy: ''
+      }));
+
+      toast.success("تم إرسال بياناتك بنجاح. ستقوم المدربة بمراجعتها والتواصل معك قريبًا.");
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      const errorMessage = error?.text || error?.message || "Unknown error";
+      toast.error(`تعذر إرسال النموذج حاليًا. ${errorMessage}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div dir="rtl" className="max-w-4xl mx-auto p-4 md:p-8">
       <Card className="border-t-4 border-t-primary">
@@ -230,7 +327,7 @@ export default function RegistrationForm() {
           <p className="text-muted-foreground">الرجاء تعبئة النموذج بدقة لضمان تقديم أفضل خدمة تناسب احتياجاتك.</p>
         </CardHeader>
         <CardContent className="pt-8">
-          <form onSubmit={handleSubmit} className="space-y-10">
+          <form onSubmit={handleEmailSubmit} className="space-y-10">
             
             {/* Section 1: Basic Info */}
             <section className="space-y-6">
@@ -527,8 +624,8 @@ export default function RegistrationForm() {
 
             {/* Submit Button */}
             <div className="pt-6 border-t border-gray-200 flex justify-center">
-              <Button type="submit" size="lg" className="w-full md:w-auto px-12 py-6 text-lg border border-emerald-600 bg-emerald-600 text-white hover:bg-emerald-700 hover:border-emerald-700 gap-2">
-                <WhatsAppIcon sx={{ fontSize: 22, color: '#ffffff' }} />
+              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto px-12 py-6 text-lg border border-emerald-600 bg-emerald-600 text-white hover:bg-emerald-700 hover:border-emerald-700 gap-2 disabled:opacity-70">
+                {isSubmitting ? "جاري الإرسال..." : null}
                 إرسال للمدربة
               </Button>
             </div>
