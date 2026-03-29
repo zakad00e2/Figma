@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { Toaster } from "./components/ui/sonner";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
@@ -9,6 +9,7 @@ const Services = lazy(() => import("./components/Services").then(m => ({ default
 const Testimonials = lazy(() => import("./components/Testimonials").then(m => ({ default: m.Testimonials })));
 const Consultation = lazy(() => import("./components/Consultation").then(m => ({ default: m.Consultation })));
 const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
+const RegistrationForm = lazy(() => import("./components/RegistrationForm"));
 
 // Minimal loading fallback
 function SectionFallback() {
@@ -16,6 +17,31 @@ function SectionFallback() {
 }
 
 export default function App() {
+  const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  if (path === '/register') {
+    return (
+      <div className="min-h-screen pt-20">
+        <Navbar />
+        <main>
+          <Suspense fallback={<SectionFallback />}>
+            <RegistrationForm />
+          </Suspense>
+        </main>
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+        <Toaster position="top-center" richColors />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar />
