@@ -131,11 +131,12 @@ export default function RegistrationForm() {
     q10: '', q10Details: '',
     
     // Food
-    q11: '', q11Like: '', q11Dislike: '',
+    q11: '', q11Like: '', q11Dislike: [] as string[], q11DislikeOther: '',
     
     // Routine
     wakeTime: '',
     sleepTime: '',
+    workTime: '',
     breakfastTime: '',
     lunchTime: '',
     dinnerTime: '',
@@ -164,8 +165,8 @@ export default function RegistrationForm() {
       name, phone, age, height, weight, gender, goal,
       q1, q1Details, q2, q2Details, q3, q3Details,
       q4, q4Details, q5, q5Details, q6, q6Details,
-      q10, q10Details, q11, q11Like, q11Dislike,
-      wakeTime, sleepTime, breakfastTime, lunchTime, dinnerTime,
+      q10, q10Details, q11, q11Like, q11Dislike, q11DislikeOther,
+      wakeTime, sleepTime, workTime, breakfastTime, lunchTime, dinnerTime,
       femalePeriods, femalePregnancy
     } = formData;
 
@@ -195,13 +196,16 @@ export default function RegistrationForm() {
     message += `11) هل لديك تفضيلات غذائية: ${q11}\n`;
     if (q11 === 'نعم') {
       message += `تفضلها: ${q11Like}\n`;
-      message += `لا تفضلها: ${q11Dislike}\n`;
+      const dislikesArr = [...(Array.isArray(q11Dislike) ? q11Dislike : [])];
+      if (q11DislikeOther) dislikesArr.push(q11DislikeOther);
+      message += `لا تفضلها: ${dislikesArr.length > 0 ? dislikesArr.join('، ') : 'لا يوجد'}\n`;
     }
     message += '\n';
 
     message += `*الروتين اليومي:*\n`;
     message += `- وقت الاستيقاظ: ${wakeTime}\n`;
     message += `- وقت النوم: ${sleepTime}\n`;
+    message += `- أوقات الدوام / العمل: ${workTime}\n`;
     message += `- وقت الفطور: ${breakfastTime}\n`;
     message += `- وقت الغداء: ${lunchTime}\n`;
     message += `- وقت العشاء: ${dinnerTime}\n\n`;
@@ -231,9 +235,10 @@ export default function RegistrationForm() {
       q5: '', q5Details: '',
       q6: '', q6Details: '',
       q10: '', q10Details: '',
-      q11: '', q11Like: '', q11Dislike: '',
+      q11: '', q11Like: '', q11Dislike: [], q11DislikeOther: '',
       wakeTime: '',
       sleepTime: '',
+      workTime: '',
       breakfastTime: '',
       lunchTime: '',
       dinnerTime: '',
@@ -299,9 +304,10 @@ export default function RegistrationForm() {
         q5: '', q5Details: '',
         q6: '', q6Details: '',
         q10: '', q10Details: '',
-        q11: '', q11Like: '', q11Dislike: '',
+        q11: '', q11Like: '', q11Dislike: [], q11DislikeOther: '',
         wakeTime: '',
         sleepTime: '',
+        workTime: '',
         breakfastTime: '',
         lunchTime: '',
         dinnerTime: '',
@@ -545,8 +551,36 @@ export default function RegistrationForm() {
                           <Textarea id="q11Like" name="q11Like" value={formData.q11Like} onChange={handleChange} className="w-full border border-gray-300 focus-visible:ring-primary/15 min-h-[100px]" />
                         </div>
                         <div>
-                          <Label htmlFor="q11Dislike" className="text-sm text-gray-600 mb-1 block">أطعمة لا تفضلها:</Label>
-                          <Textarea id="q11Dislike" name="q11Dislike" value={formData.q11Dislike} onChange={handleChange} className="w-full border border-gray-300 focus-visible:ring-primary/15 min-h-[100px]" />
+                          <Label className="text-sm text-gray-600 mb-2 block">أطعمة لا تفضلها:</Label>
+                          <div className="grid grid-cols-2 gap-3 mt-1 bg-white p-3 rounded-md border border-gray-200">
+                            {['بيض', 'سمك', 'تونة', 'لحمة', 'شوفان', 'أفوكادو'].map((item) => (
+                              <label key={item} className="flex items-center space-x-2 space-x-reverse cursor-pointer gap-2">
+                                <input
+                                  type="checkbox"
+                                  value={item}
+                                  checked={Array.isArray(formData.q11Dislike) && formData.q11Dislike.includes(item)}
+                                  onChange={(e) => {
+                                    const checked = e.target.checked;
+                                    setFormData(prev => {
+                                      const current = Array.isArray(prev.q11Dislike) ? prev.q11Dislike : [];
+                                      return {
+                                        ...prev,
+                                        q11Dislike: checked 
+                                          ? [...current, item] 
+                                          : current.filter(i => i !== item)
+                                      };
+                                    });
+                                  }}
+                                  className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                                />
+                                <span className="text-sm font-medium text-gray-700">{item}</span>
+                              </label>
+                            ))}
+                            <div className="col-span-2 mt-2 pt-2 border-t border-gray-100">
+                              <Label htmlFor="q11DislikeOther" className="text-xs text-gray-500 mb-1.5 block">غيره (يرجى التحديد):</Label>
+                              <Input id="q11DislikeOther" name="q11DislikeOther" value={formData.q11DislikeOther} onChange={handleChange} placeholder="..." className="w-full border border-gray-300 focus-visible:ring-primary/15 h-9" />
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -567,6 +601,10 @@ export default function RegistrationForm() {
                 <div className="space-y-2">
                   <Label htmlFor="sleepTime">وقت النوم</Label>
                   <Input type="time" dir="ltr" id="sleepTime" name="sleepTime" value={formData.sleepTime} onChange={handleChange} className="w-full min-w-[150px] h-12 text-center text-lg font-medium border border-gray-300 focus-visible:ring-primary/15 appearance-none" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="workTime">أوقات الدوام / العمل</Label>
+                  <Input type="text" id="workTime" name="workTime" value={formData.workTime} onChange={handleChange} placeholder="مثال: من 8 إلى 4" className="w-full min-w-[150px] h-12 text-right px-3 text-lg font-medium border border-gray-300 focus-visible:ring-primary/15 appearance-none" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="breakfastTime">وقت الفطور</Label>
