@@ -25,6 +25,7 @@ function YesNoQuestion({
   handleRadioChange,
   preventRadioFocus,
   detailsLabel = "يرجى ذكرها فيما يلي:",
+  hideDetails = false,
 }: any) {
   const value = formData[valueKey as keyof typeof formData];
 
@@ -82,7 +83,7 @@ function YesNoQuestion({
       </div>
 
       <AnimatePresence initial={false}>
-        {value === 'نعم' && (
+        {value === 'نعم' && !hideDetails && (
           <motion.div
             key={`${id}-details`}
             initial={{ opacity: 0, height: 0, y: -8 }}
@@ -132,6 +133,7 @@ export default function RegistrationForm() {
     
     // Food
     q11: '', q11Like: '', q11Dislike: [] as string[], q11DislikeOther: '',
+    q12: '', q12Details: '',
     
     // Routine
     wakeTime: '',
@@ -166,6 +168,7 @@ export default function RegistrationForm() {
       q1, q1Details, q2, q2Details, q3, q3Details,
       q4, q4Details, q5, q5Details, q6, q6Details,
       q10, q10Details, q11, q11Like, q11Dislike, q11DislikeOther,
+      q12, q12Details,
       wakeTime, sleepTime, workTime, breakfastTime, lunchTime, dinnerTime,
       femalePeriods, femalePregnancy
     } = formData;
@@ -200,6 +203,9 @@ export default function RegistrationForm() {
       if (q11DislikeOther) dislikesArr.push(q11DislikeOther);
       message += `لا تفضلها: ${dislikesArr.length > 0 ? dislikesArr.join('، ') : 'لا يوجد'}\n`;
     }
+    
+    // Nescafe preference
+    message += `12) الاعتماد على النسكافيه يومياً: ${q12}\n`;
     message += '\n';
 
     message += `*الروتين اليومي:*\n`;
@@ -236,6 +242,7 @@ export default function RegistrationForm() {
       q6: '', q6Details: '',
       q10: '', q10Details: '',
       q11: '', q11Like: '', q11Dislike: [], q11DislikeOther: '',
+      q12: '', q12Details: '',
       wakeTime: '',
       sleepTime: '',
       workTime: '',
@@ -305,6 +312,7 @@ export default function RegistrationForm() {
         q6: '', q6Details: '',
         q10: '', q10Details: '',
         q11: '', q11Like: '', q11Dislike: [], q11DislikeOther: '',
+        q12: '', q12Details: '',
         wakeTime: '',
         sleepTime: '',
         workTime: '',
@@ -587,6 +595,18 @@ export default function RegistrationForm() {
                   )}
                 </AnimatePresence>
               </div>
+
+              <YesNoQuestion
+                id="q12"
+                label="12. هل تعتمد على تناول النسكافيه كجزء من روتينك اليومي؟"
+                valueKey="q12"
+                detailsKey="q12Details"
+                formData={formData}
+                handleChange={handleChange}
+                handleRadioChange={handleRadioChange}
+                preventRadioFocus={preventRadioFocus}
+                hideDetails={true}
+              />
             </section>
 
             {/* Section 4: Routine */}
