@@ -119,6 +119,7 @@ export default function RegistrationForm() {
     weight: '',
     gender: 'ذكر',
     goal: 'اكتساب وزن',
+    goalOther: '',
     
     // Health Questions
     q1: '', q1Details: '',
@@ -164,7 +165,7 @@ export default function RegistrationForm() {
 
   const buildRegistrationMessage = () => {
     const {
-      name, phone, age, height, weight, gender, goal,
+      name, phone, age, height, weight, gender, goal, goalOther,
       q1, q1Details, q2, q2Details, q3, q3Details,
       q4, q4Details, q5, q5Details, q6, q6Details,
       q10, q10Details, q11, q11Like, q11Dislike, q11DislikeOther,
@@ -182,7 +183,7 @@ export default function RegistrationForm() {
     message += `- الطول: ${height}\n`;
     message += `- الوزن: ${weight}\n`;
     message += `- الجنس: ${gender}\n`;
-    message += `- الهدف: ${goal}\n\n`;
+    message += `- الهدف: ${goal === 'غير ذلك' ? `غير ذلك (${goalOther})` : goal}\n\n`;
 
     message += `*الحالة الصحية:*\n`;
     message += `1) أمراض حالية أو مزمنة أو إعاقات: ${q1}\n` + (q1 === 'نعم' ? `التفاصيل: ${q1Details}\n` : '');
@@ -232,8 +233,9 @@ export default function RegistrationForm() {
       age: '',
       height: '',
       weight: '',
-      gender: 'ط°ظƒط±',
-      goal: 'ط§ظƒطھط³ط§ط¨ ظˆط²ظ†',
+      gender: 'ذكر',
+      goal: 'اكتساب وزن',
+      goalOther: '',
       q1: '', q1Details: '',
       q2: '', q2Details: '',
       q3: '', q3Details: '',
@@ -304,6 +306,7 @@ export default function RegistrationForm() {
         age: '',
         height: '',
         weight: '',
+        goalOther: '',
         q1: '', q1Details: '',
         q2: '', q2Details: '',
         q3: '', q3Details: '',
@@ -392,6 +395,19 @@ export default function RegistrationForm() {
                     <option value="بناء عضل">بناء عضل</option>
                     <option value="غير ذلك">غير ذلك</option>
                   </select>
+                  {formData.goal === 'غير ذلك' && (
+                    <div className="pt-2 mt-2">
+                      <Label htmlFor="goalOther" className="text-sm text-gray-600 mb-2 block">يرجى كتابة الهدف:</Label>
+                      <Input 
+                        id="goalOther" 
+                        name="goalOther" 
+                        value={formData.goalOther} 
+                        onChange={handleChange} 
+                        placeholder="أدخل هدفك هنا" 
+                        className="border border-gray-300 focus-visible:ring-primary/15" 
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </section>
