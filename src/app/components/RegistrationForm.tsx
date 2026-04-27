@@ -113,6 +113,7 @@ function YesNoQuestion({
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     name: '',
+    city: '',
     phone: '',
     age: '',
     height: '',
@@ -165,7 +166,7 @@ export default function RegistrationForm() {
 
   const buildRegistrationMessage = () => {
     const {
-      name, phone, age, height, weight, gender, goal, goalOther,
+      name, city, phone, age, height, weight, gender, goal, goalOther,
       q1, q1Details, q2, q2Details, q3, q3Details,
       q4, q4Details, q5, q5Details, q6, q6Details,
       q10, q10Details, q11, q11Like, q11Dislike, q11DislikeOther,
@@ -178,6 +179,7 @@ export default function RegistrationForm() {
     
     message += `*البيانات الأساسية:*\n`;
     message += `- الاسم: ${name}\n`;
+    message += `- المدينة: ${city}\n`;
     message += `- رقم الهاتف: ${phone}\n`;
     message += `- العمر: ${age}\n`;
     message += `- الطول: ${height}\n`;
@@ -229,6 +231,7 @@ export default function RegistrationForm() {
   const resetForm = () => {
     setFormData({
       name: '',
+      city: '',
       phone: '',
       age: '',
       height: '',
@@ -260,7 +263,7 @@ export default function RegistrationForm() {
     e.preventDefault();
     
     // Simple validation
-    if (!formData.name || !formData.phone || !formData.age) {
+    if (!formData.name || !formData.city || !formData.phone || !formData.age) {
       alert("الرجاء تعبئة البيانات الأساسية المطلوبة.");
       return;
     }
@@ -275,7 +278,7 @@ export default function RegistrationForm() {
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.phone || !formData.age) {
+    if (!formData.name || !formData.city || !formData.phone || !formData.age) {
       toast.error("يرجى تعبئة البيانات الأساسية المطلوبة قبل الإرسال.");
       return;
     }
@@ -302,6 +305,7 @@ export default function RegistrationForm() {
       setFormData((current) => ({
         ...current,
         name: '',
+        city: '',
         phone: '',
         age: '',
         height: '',
@@ -355,6 +359,10 @@ export default function RegistrationForm() {
                   <Input id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="أدخل اسمك الكريم" className="border border-gray-300 focus-visible:ring-primary/15" />
                 </div>
                 <div className="space-y-2">
+                  <Label htmlFor="city">المدينة <span className="text-red-500">*</span></Label>
+                  <Input id="city" name="city" value={formData.city} onChange={handleChange} required placeholder="أدخل المدينة" className="border border-gray-300 focus-visible:ring-primary/15" />
+                </div>
+                <div className="space-y-2">
                   <Label htmlFor="phone">رقم الهاتف <span className="text-red-500">*</span></Label>
                   <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} required placeholder="مثال: 05xxxxxxxxx" dir="ltr" className="text-right border border-gray-300 focus-visible:ring-primary/15" />
                 </div>
@@ -382,7 +390,7 @@ export default function RegistrationForm() {
                     <option value="أنثى">أنثى</option>
                   </select>
                 </div>
-                <div className="space-y-2 md:col-span-2">
+                <div className="space-y-2">
                   <Label>الهدف المراد تحقيقه</Label>
                   <select 
                     name="goal" 
