@@ -31,12 +31,12 @@ export function Footer() {
 
   return (
     <footer role="contentinfo" aria-label="التذييل" className="bg-stone-100 text-stone-900 pt-16 pb-8">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 lg:px-20">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Contact Info - ثالث على الموبايل، أول على الشاشات الكبيرة */}
           <div className="text-right order-3 md:order-1">
-            <h4 className="text-lg font-semibold mb-6 text-emerald-600">تواصلي معي</h4>
+            <h4 className="text-lg font-semibold mb-6 text-black">تواصلي معي</h4>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 justify-end">
                 <span className="text-stone-600">Soma.kh44@gmail.com</span>
@@ -56,12 +56,13 @@ export function Footer() {
 
           {/* Quick Links - ثاني على الموبايل والشاشات الكبيرة */}
           <div className="text-right order-2 md:order-2">
-            <h4 className="text-lg font-semibold mb-6 text-emerald-600">روابط سريعة</h4>
+            <h4 className="text-lg font-semibold mb-6 text-black">روابط سريعة</h4>
             <ul className="space-y-3">
               {[
                 { name: "الرئيسية", href: "#" },
                 { name: "من أنا", href: "#about" },
                 { name: "خدماتي", href: "#services" },
+                { name: "كتبي", href: "/#books" },
                 { name: "شهادات العملاء", href: "#testimonials" },
                 { name: "احجزي استشارة", href: "#consultation" }
               ].map((link, index) => (
@@ -94,37 +95,38 @@ export function Footer() {
                 }}
               />
             </div>
-            <p className="text-stone-600 leading-relaxed mb-6">
+            <p className="text-lg text-stone-600 leading-relaxed mb-6 max-w-[34rem] ms-auto">
                استشارية تغذية ومدربة رياضة متخصصة 
-              في مرافقة النساء، في رحلتهن نحو الصحة والعافية
+              في مرافقة النساء <br />
+              في رحلتهن نحو الصحة والعافية
             </p>
-            <div className="flex gap-4 justify-end">
+            <div className="flex gap-6 justify-end">
               <a 
                 href="https://www.instagram.com/withmaysam/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white shadow-sm hover:bg-emerald-600 hover:text-white text-stone-600 rounded-full flex items-center justify-center transition-colors"
+                className="text-emerald-600 transition-colors hover:text-emerald-700"
                 aria-label="Instagram"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-8 h-8" />
               </a>
               <a 
                 href="https://www.tiktok.com/@maisamkhalailey?_r=1&_t=ZS-93nopbpdQZN" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white shadow-sm hover:bg-emerald-600 hover:text-white text-stone-600 rounded-full flex items-center justify-center transition-colors"
+                className="text-emerald-600 transition-colors hover:text-emerald-700"
                 aria-label="TikTok"
               >
-                <TikTokIcon className="w-5 h-5" />
+                <TikTokIcon className="w-8 h-8" />
               </a>
               <a 
                 href="https://api.whatsapp.com/send?phone=972547031505" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white shadow-sm hover:bg-emerald-600 hover:text-white text-stone-600 rounded-full flex items-center justify-center transition-colors"
+                className="text-emerald-600 transition-colors hover:text-emerald-700"
                 aria-label="WhatsApp"
               >
-                <WhatsAppIcon className="w-5 h-5" />
+                <WhatsAppIcon className="w-8 h-8" />
               </a>
             </div>
           </div>

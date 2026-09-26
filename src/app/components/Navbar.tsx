@@ -48,6 +48,7 @@ export function Navbar() {
     
     
     { name: "شهادات العملاء", id: "testimonials" },
+    { name: "كتبي", id: "books" },
     { name: "خدماتي", id: "services" },
     { name: "من أنا", id: "about" },
      { name: "الرئيسية", href: "#" },
@@ -66,12 +67,14 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-10 md:px-20"> 
+      <div className="container mx-auto px-6 lg:px-20">
         <div className="flex items-center justify-between h-20">
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="cursor-pointer md:hidden p-2 text-stone-900"
+            className={`cursor-pointer p-2 md:hidden ${
+              isScrolled ? "text-stone-900" : "text-white"
+            }`}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -85,22 +88,22 @@ export function Navbar() {
           <div className="hidden md:block">
             <Button
               onClick={() => navigateTo("consultation")}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl"
+              className="rounded-xl bg-emerald-600 text-white hover:bg-emerald-700"
             >
               احجزي استشارة مجانية
             </Button>
           </div>
 
           {/* Navigation Links - Center */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link, index) => (
               <button
                 key={index}
                 onClick={() => navigateTo(link.id)}
-                className={`cursor-pointer transition-colors ${
+                className={`cursor-pointer font-normal transition-colors ${
                   isScrolled 
                     ? "text-stone-700 hover:text-emerald-600" 
-                    : "text-stone-900 hover:text-emerald-600"
+                    : "text-white hover:text-emerald-200"
                 }`}
               >
                 {link.name}
@@ -150,7 +153,7 @@ export function Navbar() {
             ))}
             <Button
               onClick={() => navigateTo("consultation")}
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl"
+              className="w-full rounded-xl bg-emerald-600 text-white hover:bg-emerald-700"
             >
               احجزي استشارة مجانية
             </Button>

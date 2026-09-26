@@ -1,127 +1,101 @@
-import { motion } from "motion/react";
-import { Button } from "./ui/button";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { TextReveal } from "./TextReveal";
+import { RotatingText, RotatingTextContainer } from "./animate-ui/primitives/texts/rotating";
+import type { MouseEvent } from "react";
+
+function handleSectionLinkClick(event: MouseEvent<HTMLAnchorElement>, targetId: string) {
+  event.preventDefault();
+
+  const target = document.getElementById(targetId);
+  if (!target) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.history.replaceState({}, "", `#${targetId}`);
+  target.scrollIntoView({
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+    block: "start",
+  });
+}
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section aria-label="القسم الرئيسي" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-pink-50">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, #059669 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}></div>
-      </div>
+    <section aria-label="القسم الرئيسي" className="hero-viewport relative isolate flex min-h-screen items-start overflow-hidden bg-stone-950">
+      <img
+        src="/hero-full-width.png"
+        alt="جلسة لياقة جماعية في الهواء الطلق"
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+        width="1672"
+        height="941"
+        // @ts-ignore
+        fetchPriority="high"
+      />
+      <div className="absolute inset-0 bg-gradient-to-l from-stone-950/70 via-stone-950/35 to-transparent" />
+      <div className="absolute inset-0 bg-stone-950/15 lg:hidden" />
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-right"
-          >
-            <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm">معكِ في كل خطوة</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl my-15 md:my-4 md:mt-0 lg:text-7xl  text-stone-900 leading-tight">
-              رحلتكِ نحو
-              <span className="text-emerald-600 block mt-2">حياة صحية متوازنة</span>
-            </h1>
-            
-            <p className=" md:text-2xl text-stone-600 mb-8 leading-relaxed">
-              أنا <span className="text-emerald-600 font-semibold">ميسم</span>،  استشارية تغذية ومدربة رياضة متخصصة 
-              في مرافقة النساء، في رحلتهن نحو الصحة والعافية
-            </p>
-
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-end">
-              <Button 
-              
-                onClick={() => scrollToSection('consultation')}
-                size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
+      <div className="container relative z-10 mx-auto px-6 pb-16 pt-32 md:pt-24 lg:px-20 lg:pb-20 lg:pt-50">
+        <div dir="rtl" className="max-w-2xl text-right lg:ml-auto">
+          <h1 className="my-6 ml-auto max-w-lg text-4xl font-bold leading-tight text-white md:my-4 md:mt-0 md:text-4xl lg:text-5xl" style={{ fontFamily: "var(--font-family-display)" }}>
+            <span className="inline-flex items-baseline gap-x-2 whitespace-nowrap">
+              رحلتكِ نحو حياة{" "}
+              <RotatingTextContainer
+                delay={500}
+                y={-50}
+                duration={2800}
+                text={["صحية", "قوية", "نشيطة"]}
+                className="relative inline-grid h-[1.25em] min-w-[6ch] overflow-hidden align-bottom text-amber-300"
               >
-                 <ArrowLeft className="mr-2 h-5 w-5" />
-                احجزي استشارة مجانية
-               
-              </Button>
-              
-              <Button 
-                onClick={() => scrollToSection('about')}
-                variant="outline"
-                size="lg"
-                className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-8 py-6 text-lg rounded-xl"
-              >
-                تعرفي علي أكثر
-              </Button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap gap-8 justify-center lg:justify-end">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-emerald-600">+500</div>
-                <div className="text-sm text-stone-500">عميلة سعيدة</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-emerald-600">+3</div>
-                <div className="text-sm text-stone-500">سنوات خبرة</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-emerald-600">100%</div>
-                <div className="text-sm text-stone-500">التزام بنجاحك</div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Image */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="/hero-image.jpg"
-                alt="ميسم - استشارية تغذية ومدربة رياضة - رحلتك نحو حياة صحية متوازنة"
-                className="w-full h-[600px] object-cover"
-                loading="eager"
-                decoding="async"
-                width="600"
-                height="600"
-                // @ts-ignore
-                fetchPriority="high"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/30 to-transparent"></div>
-            </div>
+                <RotatingText />
+              </RotatingTextContainer>
+            </span>
+          </h1>
             
-            {/* Floating Cards */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl"
+          <p className="mb-8 ml-auto max-w-md text-sm leading-relaxed text-stone-100 md:text-lg">
+            <TextReveal text="أرافقكِ خطوة بخطوة حتى تطوري قوتكِ ولياقتكِ، وتشعري بطاقة وثقة أكبر في جسمكِ، من خلال تدريب يناسبكِ" stagger={0.025} delay={0.42} />
+          </p>
+          <div aria-label="إجراءات البطل الرئيسية" className="-mt-3 mb-8 flex w-full max-w-md flex-row flex-wrap gap-2 sm:ml-auto sm:w-auto">
+            <a
+              href="#consultation"
+              onClick={(event) => handleSectionLinkClick(event, "consultation")}
+              style={{ fontFeatureSettings: "'ss01', 'cv11'" }}
+              className="inline-flex min-h-12 flex-[2] items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 text-sm font-medium text-white shadow-lg shadow-emerald-950/25 transition-colors hover:bg-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300 sm:flex-none sm:px-6 sm:text-base"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🧘‍♀️</span>
-                </div>
-                <div className="text-right">
-                  <div className="font-semibold text-stone-900">تدريب لياقة بدنية</div>
-                  <div className="text-sm text-stone-500">بجلسات رياضية على البحر</div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+              <svg className="size-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" clipRule="evenodd" d="M6 2C6 1.44772 6.44772 1 7 1C7.55228 1 8 1.44772 8 2V3H16V2C16 1.44772 16.4477 1 17 1C17.5523 1 18 1.44772 18 2V3H19C20.6569 3 22 4.34315 22 6V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V6C2 4.34315 3.34315 3 5 3H6V2ZM16 5V6C16 6.55228 16.4477 7 17 7C17.5523 7 18 6.55228 18 6V5H19C19.5523 5 20 5.44772 20 6V9H4V6C4 5.44772 4.44772 5 5 5H6V6C6 6.55228 6.44772 7 7 7C7.55228 7 8 6.55228 8 6V5H16ZM4 11V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V11H4Z" fill="currentColor" />
+              </svg>
+              احجزي استشارة
+            </a>
+            <a
+              href="#books"
+              onClick={(event) => handleSectionLinkClick(event, "books")}
+              style={{ fontFeatureSettings: "'ss01', 'cv11'" }}
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl px-3 text-sm font-normal text-white underline decoration-1 decoration-white/70 underline-offset-4 transition-[text-decoration-thickness] hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:flex-none sm:px-6 sm:text-base"
+            >
+              اطلبي كتبي
+            </a>
+          </div>
         </div>
       </div>
+
+      <div className="liquid-glass-card absolute bottom-8 left-6 z-10 grid w-[min(calc(100%_-_3rem),34rem)] min-h-28 grid-cols-3 rounded-[20px] px-1.5 py-1.5 shadow-xl shadow-black/20 sm:min-h-32 sm:bottom-12 sm:left-10 lg:bottom-16 lg:left-20 lg:w-[min(calc(100%_-_10rem),40rem)] lg:min-h-40">
+        <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] h-[60%] w-px -translate-x-1/2 bg-white/30 left-1/3" />
+        <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] h-[60%] w-px -translate-x-1/2 bg-white/30 left-2/3" />
+        <div className="flex flex-col items-center justify-center px-3 text-center sm:px-5 lg:px-6">
+          <TextReveal text="+500" direction="ltr" split="char" stagger={0.05} delay={0.9} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
+          <TextReveal text="عميلة سعيدة" direction="rtl" stagger={0.06} delay={1.05} className="text-center text-xs text-white sm:text-sm lg:text-base" />
+        </div>
+        <div className="flex flex-col items-center justify-center px-3 text-center sm:px-5 lg:px-6">
+          <TextReveal text="+3" direction="ltr" split="char" stagger={0.05} delay={1.05} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
+          <TextReveal text="سنوات خبرة" direction="rtl" stagger={0.06} delay={1.2} className="text-center text-xs text-white sm:text-sm lg:text-base" />
+        </div>
+        <div className="flex flex-col items-center justify-center px-3 text-center sm:px-5 lg:px-6">
+          <TextReveal text="100%" direction="ltr" split="char" stagger={0.05} delay={1.2} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
+          <TextReveal text="التزام بنجاحك" direction="rtl" stagger={0.06} delay={1.35} className="text-center text-xs text-white sm:text-sm lg:text-base" />
+        </div>
+      </div>
+
     </section>
   );
 }

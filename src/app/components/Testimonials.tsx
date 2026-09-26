@@ -37,10 +37,18 @@ export function Testimonials() {
       rating: 5
     }
   ];
+  const clientPortraits = [
+    "/client-portraits/client-1.jpg",
+    "/client-portraits/client-2.jpg",
+    "/client-portraits/client-3.jpg",
+    "/client-portraits/client-4.jpg",
+    "/client-portraits/client-5.jpg",
+  ];
+  const carouselTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section id="testimonials" aria-label="شهادات وآراء العملاء" className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section data-gsap-reveal id="testimonials" aria-label="شهادات وآراء العملاء" className="py-24 bg-white">
+      <div className="container mx-auto px-6 lg:px-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,57 +68,53 @@ export function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <Card className="h-full border-2 border-stone-100 hover:border-emerald-200 hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-8 text-right">
-                  {/* Quote Icon */}
-                  <div className="mb-6">
-                    <Quote className="w-12 h-12 text-emerald-200 ml-auto" />
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-6 justify-end">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-
-                  {/* Testimonial Text */}
-                  <p className="text-stone-700 text-lg leading-relaxed mb-8">
-                    {testimonial.text}
-                  </p>
-
-                  {/* Author Info */}
-                  <div className="flex items-center gap-4 justify-end pt-6 border-t border-stone-100">
-                    <div className="text-right">
-                      <div className="font-semibold text-stone-900">{testimonial.name}</div>
-                      <div className="text-sm text-stone-500">{testimonial.role}</div>
+        {/* Testimonials Carousel */}
+        <div className="testimonial-carousel-edge relative overflow-hidden" aria-label="آراء العملاء المتحركة">
+          <div className="testimonial-marquee flex w-max gap-4">
+            {carouselTestimonials.map((testimonial, index) => (
+              <article
+                key={`${testimonial.name}-${index}`}
+                aria-hidden={index >= testimonials.length}
+                className="w-[min(88vw,23rem)] shrink-0"
+              >
+                <Card className="h-full border-2 border-stone-100 transition-all duration-300 hover:border-emerald-200 hover:shadow-xl">
+                  <CardContent className="flex h-full flex-col p-5 text-right">
+                    <div className="mb-3">
+                      <Quote className="ml-auto h-8 w-8 text-emerald-200" />
                     </div>
-                    <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-emerald-100">
-                      <img 
-                        src={testimonial.image} 
-                        alt={`شهادة ${testimonial.name} - ${testimonial.role}`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                        width="56"
-                        height="56"
-                      />
+
+                    <div className="mb-3 flex justify-end gap-1">
+                      {[...Array(testimonial.rating)].map((_, ratingIndex) => (
+                        <Star key={ratingIndex} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                      ))}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+
+                    <p className="mb-4 line-clamp-5 text-[15px] leading-6 text-stone-700">{testimonial.text}</p>
+
+                    <div className="mt-auto flex items-center justify-end gap-3 border-t border-stone-100 pt-4">
+                      <div className="text-right">
+                        <div className="text-sm font-semibold text-stone-900">{testimonial.name}</div>
+                        <div className="text-xs text-stone-500">{testimonial.role}</div>
+                      </div>
+                      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-emerald-100">
+                        <img
+                          src={testimonial.image}
+                          alt={`شهادة ${testimonial.name} - ${testimonial.role}`}
+                          className="h-full w-full object-cover"
+                          loading="lazy"
+                          decoding="async"
+                          width="56"
+                          height="56"
+                        />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </article>
+            ))}
+          </div>
+          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 start-0 z-20 w-16 bg-gradient-to-r from-white via-white/80 to-transparent" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 end-0 z-20 w-16 bg-gradient-to-l from-white via-white/80 to-transparent" />
         </div>
 
         {/* Trust Banner */}
@@ -126,11 +130,23 @@ export function Testimonials() {
             <p className="text-xl text-stone-600 mb-8">
               رحلتك نحو الصحة والعافية تبدأ من هنا
             </p>
-            <div className="flex items-center justify-center gap-2">
-              <div className="flex -space-x-2 rtl:space-x-reverse">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="w-12 h-12 rounded-full bg-emerald-600 border-4 border-white flex items-center justify-center text-white text-sm font-semibold">
-                    {i + 1}
+            <div className="flex items-center justify-center gap-4">
+              <div className="flex -space-x-3 rtl:space-x-reverse" aria-label="صور عميلات سعيدات">
+                {clientPortraits.map((src, index) => (
+                  <div
+                    key={src}
+                    className="relative h-12 w-12 rounded-full overflow-hidden bg-emerald-100 shadow-sm"
+                    style={{ zIndex: clientPortraits.length - index }}
+                  >
+                    <img
+                      src={src}
+                      alt=""
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      width="96"
+                      height="96"
+                    />
                   </div>
                 ))}
               </div>

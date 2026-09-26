@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Calendar, Send, CheckCircle2, Loader2 } from "lucide-react";
+import { Calendar, Send, CheckCircle2, Loader2, MessageCircle, ClipboardList, Target } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -84,8 +84,8 @@ export function Consultation() {
   };
 
   return (
-    <section id="consultation" aria-label="حجز استشارة مجانية" className="py-24 bg-gradient-to-b from-stone-50 to-white">
-      <div className="container mx-auto px-4">
+    <section data-gsap-reveal id="consultation" aria-label="حجز استشارة مجانية" className="py-24 bg-gradient-to-b from-stone-50 to-white">
+      <div className="container mx-auto px-6 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Right Side - Form */}
           <motion.div
@@ -189,10 +189,6 @@ export function Consultation() {
                         </>
                       )}
                     </Button>
-
-                    <p className="text-sm text-stone-500 text-center">
-                      بإرسال هذا النموذج، أنت توافقين على سياسة الخصوصية
-                    </p>
                   </form>
                 </CardContent>
               </Card>
@@ -241,64 +237,54 @@ export function Consultation() {
               ابدئي رحلتك نحو حياة صحية اليوم
             </h2>
 
-            <p className="text-xl text-stone-600 mb-8 leading-relaxed">
-              احجزي استشارة مجانية مدتها 15 دقيقة لمناقشة أهدافك الصحية وكيف يمكنني مساعدتك
-            </p>
+                <p className="text-xl text-stone-600 mb-8 leading-relaxed">
+                  احجزي استشارة مجانية مدتها 15 دقيقة لمناقشة أهدافك الصحية وكيف يمكنني مساعدتك
+                </p>
 
-            {/* Benefits */}
-            <div className="space-y-6 mb-12">
-              {[
-                {
-                  title: "استشارة شخصية مجانية",
-                  description: "جلسة مدتها 15 دقيقة لفهم احتياجاتك وأهدافك",
-                  icon: "💬"
-                },
-                {
-                  title: "تقييم صحي أولي",
-                  description: "تقييم شامل لحالتك الصحية ونمط حياتك الحالي",
-                  icon: "📋"
-                },
-                {
-                  title: "خطة عمل واضحة",
-                  description: "توصيات مبدئية وخطة طريق لتحقيق أهدافك",
-                  icon: "🎯"
-                },
-                // {
-                //   title: "متابعة مستمرة",
-                //   description: "دعم وتوجيه على مدار رحلتك الصحية",
-                //   icon: "🤝"
-                // }
-              ].map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-start gap-4 justify-end"
-                >
-                  <div className="text-right">
-                    <h4 className="text-lg font-semibold text-stone-900 mb-1">{benefit.title}</h4>
-                    <p className="text-stone-600">{benefit.description}</p>
-                  </div>
-                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 text-2xl">
-                    {benefit.icon}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Trust Badge */}
-            <div className="bg-gradient-to-l from-emerald-50 to-transparent p-6 rounded-2xl border-r-4 border-emerald-500">
-              <div className="flex items-center gap-3 justify-end">
-                <div className="text-right">
-                  <p className="font-semibold text-stone-900">سرية تامة ومهنية عالية</p>
-                  <p className="text-sm text-stone-600">جميع المعلومات محمية وسرية</p>
+                <div className="space-y-6">
+                  {[
+                    {
+                      title: "استشارة شخصية مجانية",
+                      description: "جلسة مدتها 15 دقيقة لفهم احتياجاتك وأهدافك",
+                      Icon: MessageCircle,
+                      background: "bg-rose-100",
+                      icon: "text-rose-600",
+                    },
+                    {
+                      title: "تقييم صحي أولي",
+                      description: "تقييم شامل لحالتك الصحية ونمط حياتك الحالي",
+                      Icon: ClipboardList,
+                      background: "bg-sky-100",
+                      icon: "text-sky-600",
+                    },
+                    {
+                      title: "خطة عمل واضحة",
+                      description: "توصيات مبدئية وخطة طريق لتحقيق أهدافك",
+                      Icon: Target,
+                      background: "bg-amber-100",
+                      icon: "text-amber-600",
+                    },
+                  ].map((benefit, index) => (
+                    <motion.div
+                      key={benefit.title}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="flex items-start justify-end gap-4"
+                    >
+                      <div className="text-right">
+                        <h4 className="mb-1 text-lg font-medium text-stone-900">{benefit.title}</h4>
+                        <p className="text-stone-600">{benefit.description}</p>
+                      </div>
+                      <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${benefit.background}`}>
+                        <benefit.Icon className={`h-6 w-6 ${benefit.icon}`} strokeWidth={1.8} aria-hidden="true" />
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-                <div className="text-3xl">🔒</div>
-              </div>
-            </div>
-          </motion.div>
+
+                  </motion.div>
         </div>
       </div>
     </section>

@@ -1,8 +1,14 @@
+import { useLayoutEffect, useRef } from "react";
 import { motion } from "motion/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Activity, Apple, Heart, Baby, Stethoscope, Users } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export function Services() {
+  const sectionRef = useRef<HTMLElement>(null);
   const services = [
     {
       icon: <Stethoscope className="w-8 h-8" />,
@@ -81,9 +87,56 @@ export function Services() {
     }
   };
 
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const context = gsap.context(() => {
+      section.querySelectorAll<HTMLElement>("[data-service-card]").forEach((card) => {
+        const features = card.querySelectorAll("[data-service-feature]");
+        const dots = card.querySelectorAll("[data-service-feature-dot]");
+
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 78%",
+            once: true,
+          },
+        });
+
+        timeline.fromTo(
+          features,
+          { autoAlpha: 0, x: 20 },
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.45,
+            ease: "power3.out",
+            stagger: 0.1,
+          },
+        ).fromTo(
+          dots,
+          { scale: 0.5 },
+          {
+            scale: 1,
+            duration: 0.28,
+            ease: "back.out(2)",
+            stagger: 0.1,
+          },
+          0.12,
+        );
+      });
+    }, section);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <section id="services" aria-label="خدماتي الصحية" className="py-24 bg-gradient-to-b from-stone-50 to-white">
-      <div className="container mx-auto px-4">
+    <section ref={sectionRef} data-gsap-reveal id="services" aria-label="خدماتي الصحية" className="py-24 bg-gradient-to-b from-stone-50 to-white">
+      <div className="container mx-auto px-6 lg:px-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -117,14 +170,12 @@ export function Services() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className={`h-full border-2 ${colors.border} hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}>
+                    <Card data-service-card className={`h-full border-2 ${colors.border} hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}>
                   <CardHeader className="text-right">
-                    <div className={`w-16 h-16 ${colors.icon} rounded-2xl flex items-center justify-center mb-4 ml-auto`}>
-                      <div className="text-white">
-                        {service.icon}
-                      </div>
+                    <div className={`mb-4 ml-auto flex h-16 w-16 items-center justify-center rounded-2xl ${colors.icon}`}>
+                      <div className="text-white">{service.icon}</div>
                     </div>
-                    <CardTitle className="text-2xl mb-3">{service.title}</CardTitle>
+                    <CardTitle className="mb-0 text-2xl">{service.title}</CardTitle>
                     <CardDescription className="text-base text-stone-600">
                       {service.description}
                     </CardDescription>
@@ -134,9 +185,9 @@ export function Services() {
                       <h4 className="font-semibold text-stone-900 mb-4">: ما تشمله الخدمة</h4>
                       <ul className="space-y-3">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-3 justify-end">
+                          <li key={idx} data-service-feature className="flex items-center gap-3 justify-end">
                             <span className="text-stone-700">{feature}</span>
-                            <div className={`w-2 h-2 ${colors.icon} rounded-full flex-shrink-0`}></div>
+                            <div data-service-feature-dot className={`w-2 h-2 ${colors.icon} rounded-full flex-shrink-0`}></div>
                           </li>
                         ))}
                       </ul>

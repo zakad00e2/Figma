@@ -25,7 +25,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }
       toastOptions={{
         style: {
-          fontFamily: "'Tajawal', sans-serif",
+          fontFamily: "'Thmanyah Sans', sans-serif",
           borderRadius: "1rem",
           boxShadow: "0 10px 40px -10px rgba(0, 0, 0, 0.15)",
           padding: "1rem 1.25rem",

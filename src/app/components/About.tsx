@@ -1,10 +1,14 @@
 import { motion } from "motion/react";
+import { useState } from "react";
 import { Heart, Award, Users, Shield } from "lucide-react";
+import { AboutStoryReveal } from "./AboutStoryReveal";
 
 export function About() {
+  const [storyComplete, setStoryComplete] = useState(false);
+
   return (
-    <section id="about" aria-label="من أنا - المدربة ميسم" className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section data-gsap-reveal id="about" aria-label="من أنا - المدربة ميسم" className="bg-white py-24 overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image Side */}
           <motion.div
@@ -17,7 +21,7 @@ export function About() {
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/WhatsApp Image 2026-02-10 at 9.19.05 PM.jpeg"
+                  src="/about-maysam.jpg"
                   alt="المدربة ميسم - استشارية تغذية ومدربة رياضة متخصصة في صحة المرأة"
                   className="w-full h-[650px] object-cover object-top"
                   loading="lazy"
@@ -26,10 +30,14 @@ export function About() {
                   height="650"
                 />
               </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-emerald-500 rounded-full opacity-20"></div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-pink-400 rounded-full opacity-20"></div>
+              <div
+                data-about-founder-label
+                dir="rtl"
+                className="pointer-events-none absolute bottom-4 right-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-base text-stone-800 sm:bottom-5 sm:right-5"
+              >
+                <span className="size-3 shrink-0 bg-emerald-500 rounded-full animate-pulse motion-reduce:animate-none shadow-[0_0_0_4px_rgba(16,185,129,0.12)]" aria-hidden="true" />
+                <span>ابدئي معي الآن</span>
+              </div>
             </div>
           </motion.div>
 
@@ -48,28 +56,21 @@ export function About() {
             </div>
 
             <h2 className="text-4xl md:text-5xl mb-6 text-stone-900">
-              مرحباً، أنا <span className="text-emerald-600">ميسم</span>
+              <span className="text-black">ميسم خلايلة</span>
             </h2>
 
-            <p className="text-lg text-stone-600 leading-relaxed mb-6">
-
-
-
-
-              ممرضة مختصّة في النشاط البدني والصحة، أقدّم استشارات رياضية مخصّصة للأشخاص الذين يعانون من مشكلات صحية، بهدف تحسين جودة حياتهم بأمان وفعالية. كما أعمل كمستشارة تغذية ونمط حياة صحي قائمة على أسس علمية.
-              أقدّم إرشادًا غذائيًا للحوامل والمرضعات بما يتناسب مع احتياجاتهن الصحية في مختلف المراحل، مع خبرة عملية تتجاوز ثلاث سنوات في هذا المجال، وأسعى دائمًا لتقديم دعم موثوق ومتكامل
-          . بدأت رحلتي من شغفي العميق بتمكين النساء من العيش بصحة وحيوية. أؤمن أن كل امرأة تستحق دعمًا شاملًا خلال أهم مراحل حياتها — من الحمل والرضاعة، إلى بناء نمط حياة صحي ومستدام يعزّز التوازن الجسدي والنفسي
-            </p>
-
-
-
-            <p className="text-lg text-stone-600 leading-relaxed mb-8">
-            </p>
+            <AboutStoryReveal onComplete={() => setStoryComplete(true)} />
 
 
             {/* Credentials */}
             <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="bg-emerald-50 p-5 rounded-xl border-r-4 border-emerald-500">
+              <motion.div
+                data-about-credential
+                initial={{ opacity: 0, y: 24 }}
+                animate={storyComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                transition={{ duration: 0.45, delay: 0, ease: "power2.out" }}
+                className="bg-emerald-50 p-5 rounded-xl"
+              >
                 <div className="flex items-center gap-3 justify-end">
                   <div className="text-right">
                     <h4 className="font-semibold text-stone-900">ممرضة مختصة بالنشاط البدني</h4>
@@ -79,9 +80,15 @@ export function About() {
                     <Shield className="w-6 h-6 text-white" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-pink-50 p-5 rounded-xl border-r-4 border-pink-500">
+              <motion.div
+                data-about-credential
+                initial={{ opacity: 0, y: 24 }}
+                animate={storyComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                transition={{ duration: 0.45, delay: 0.12, ease: "power2.out" }}
+                className="bg-pink-50 p-5 rounded-xl"
+              >
                 <div className="flex items-center gap-3 justify-end">
                   <div className="text-right">
                     <h4 className="font-semibold text-stone-900">مدربة رياضة معتمدة</h4>
@@ -91,9 +98,15 @@ export function About() {
                     <Award className="w-6 h-6 text-white" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-amber-50 p-5 rounded-xl border-r-4 border-amber-500">
+              <motion.div
+                data-about-credential
+                initial={{ opacity: 0, y: 24 }}
+                animate={storyComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                transition={{ duration: 0.45, delay: 0.24, ease: "power2.out" }}
+                className="bg-amber-50 p-5 rounded-xl"
+              >
                 <div className="flex items-center gap-3 justify-end">
                   <div className="text-right">
                     <h4 className="font-semibold text-stone-900">مستشارة تغذية</h4>
@@ -103,9 +116,15 @@ export function About() {
                     <Heart className="w-6 h-6 text-white" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-rose-50 p-5 rounded-xl border-r-4 border-rose-500">
+              <motion.div
+                data-about-credential
+                initial={{ opacity: 0, y: 24 }}
+                animate={storyComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                transition={{ duration: 0.45, delay: 0.36, ease: "power2.out" }}
+                className="bg-rose-50 p-5 rounded-xl"
+              >
                 <div className="flex items-center gap-3 justify-end">
                   <div className="text-right">
                     <h4 className="font-semibold text-stone-900">متخصصة حوامل ومرضعات</h4>
@@ -115,15 +134,9 @@ export function About() {
                     <Users className="w-6 h-6 text-white" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="bg-gradient-to-l from-emerald-50 to-transparent p-6 rounded-2xl border-r-4 border-emerald-500">
-              <p className="text-lg text-stone-700 italic text-right">
-                رسالتي هي أن أكون معكِ في كل خطوة من رحلتكِ، أن أوفر لكِ الدعم المهني والعاطفي،
-                وأن أساعدكِ على اكتشاف قوتكِ الداخلية وتحقيق أهدافكِ الصحية
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>
