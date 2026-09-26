@@ -98,7 +98,7 @@ export function Consultation() {
             {!isSubmitted ? (
               <Card className="border-2 border-emerald-100 shadow-xl">
                 <CardHeader className="text-right bg-gradient-to-br from-emerald-50 to-white">
-                  <CardTitle className="text-2xl flex items-center gap-3 justify-end">
+                  <CardTitle className="text-xl sm:text-2xl flex items-center gap-3 justify-end">
                     <span>نموذج حجز الاستشارة</span>
                     <Calendar className="w-6 h-6 text-emerald-600" />
                   </CardTitle>
@@ -204,8 +204,8 @@ export function Consultation() {
                     <CheckCircle2 className="w-12 h-12 text-emerald-600" />
                   </motion.div>
 
-                  <h3 className="text-3xl mb-4 text-stone-900">تم استلام طلبك!</h3>
-                  <p className="text-xl text-stone-600 mb-6">
+                  <h3 className="text-2xl sm:text-3xl mb-4 text-stone-900">تم استلام طلبك!</h3>
+                  <p className="text-lg sm:text-xl text-stone-600 mb-6">
                     شكراً لثقتك. سنتواصل معك خلال 24 ساعة لتأكيد موعد الاستشارة.
                   </p>
 
@@ -233,11 +233,11 @@ export function Consultation() {
               <span className="text-sm font-medium">احجزي استشارتك</span>
             </div>
 
-            <h2 className="text-3xl md:text-5xl mb-6 text-stone-900">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6 text-stone-900">
               ابدئي رحلتك نحو حياة صحية اليوم
             </h2>
 
-                <p className="text-xl text-stone-600 mb-8 leading-relaxed">
+                <p className="text-lg sm:text-xl text-stone-600 mb-8 leading-relaxed">
                   احجزي استشارة مجانية مدتها 15 دقيقة لمناقشة أهدافك الصحية وكيف يمكنني مساعدتك
                 </p>
 

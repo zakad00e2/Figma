@@ -49,10 +49,10 @@ export function LeadMagnet() {
               <Gift className="w-10 h-10 text-white" />
             </div>
 
-            <h2 className="text-3xl md:text-5xl mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6">
               احصلي على كتيبك المجاني
             </h2>
-            <p className="text-xl md:text-2xl text-emerald-100 mb-12 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-emerald-100 mb-12 leading-relaxed">
               "دليل التغذية والنشاط البدني للحامل والمرضع" - كتيب شامل بصيغة PDF يحتوي على نصائح 
               طبية، خطط غذائية، وتمارين آمنة
             </p>
@@ -66,7 +66,7 @@ export function LeadMagnet() {
               >
                 <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
                   <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border-2 border-white/20">
-                    <h3 className="text-2xl mb-6 text-right">: ما ستحصلين عليه في الكتيب </h3>
+                    <h3 className="text-xl sm:text-2xl mb-6 text-right">: ما ستحصلين عليه في الكتيب </h3>
                     <div className="grid md:grid-cols-2 gap-4 mb-8 text-right">
                       {[
                         "جداول غذائية يومية",
@@ -120,8 +120,8 @@ export function LeadMagnet() {
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
                   <Check className="w-10 h-10 text-emerald-600" />
                 </div>
-                <h3 className="text-3xl mb-4">تم بنجاح! 🎉</h3>
-                <p className="text-xl text-emerald-100">
+                <h3 className="text-2xl sm:text-3xl mb-4">تم بنجاح! 🎉</h3>
+                <p className="text-lg sm:text-xl text-emerald-100">
                   تحقق من بريدك الإلكتروني. قد يستغرق الأمر بضع دقائق.
                 </p>
               </motion.div>

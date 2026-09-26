@@ -75,7 +75,7 @@ export function AboutStoryReveal({ onComplete }: AboutStoryRevealProps) {
 
   return (
     <div ref={rootRef} dir="rtl" className="mb-8">
-      <p ref={textRef} className="flex flex-wrap gap-x-1.5 gap-y-0 text-lg leading-[1.55] text-stone-600">
+      <p ref={textRef} className="flex flex-wrap gap-x-1.5 gap-y-0 text-base sm:text-lg leading-[1.55] text-stone-600">
         {story.split(/\s+/).map((word, index) => (
           <span key={`${word}-${index}`} data-word className="inline-block">
             {word}

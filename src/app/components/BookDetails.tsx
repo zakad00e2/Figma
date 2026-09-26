@@ -19,7 +19,7 @@ export function BookDetails({ book }: { book: Book }) {
 
           <div className="min-w-0">
             <p className="mb-2 text-sm text-emerald-700">من إعداد {book.author}</p>
-            <DialogTitle className="mb-3 text-3xl leading-relaxed sm:text-4xl">
+            <DialogTitle className="mb-3 text-2xl leading-relaxed sm:text-4xl">
               {book.title}
             </DialogTitle>
             <DialogDescription className="text-base leading-relaxed text-stone-600">

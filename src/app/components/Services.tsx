@@ -148,10 +148,10 @@ export function Services() {
           <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6">
             <span className="text-sm font-medium">خدماتي</span>
           </div>
-          <h2 className="text-3xl md:text-5xl mb-6 text-stone-900">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6 text-stone-900">
             كيف أساعدكِ في رحلتك الصحية؟
           </h2>
-          <p className="text-xl text-stone-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-stone-600 max-w-3xl mx-auto">
             أقدم لكِ نهجاً شاملاً يجمع بين الخبرة الطبية والتدريب الرياضي والتغذية السليمة، 
             مصمم خصيصاً لاحتياجاتك الفريدة
           </p>
@@ -175,7 +175,7 @@ export function Services() {
                     <div className={`mb-4 ml-auto flex h-16 w-16 items-center justify-center rounded-2xl ${colors.icon}`}>
                       <div className="text-white">{service.icon}</div>
                     </div>
-                    <CardTitle className="mb-0 text-2xl">{service.title}</CardTitle>
+                    <CardTitle className="mb-0 text-xl sm:text-2xl">{service.title}</CardTitle>
                     <CardDescription className="text-base text-stone-600">
                       {service.description}
                     </CardDescription>
@@ -208,11 +208,11 @@ export function Services() {
           className="mt-20"
         >
           <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-12 text-white text-right shadow-2xl">
-            <h3 className="text-3xl md:text-4xl mb-8">لماذا تختارينني؟</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl mb-8">لماذا تختارينني؟</h3>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="flex items-start gap-4 justify-end">
                 <div className="text-right">
-                  <h4 className="text-xl mb-2">نهج علمي مستدام</h4>
+                  <h4 className="text-lg sm:text-xl mb-2">نهج علمي مستدام</h4>
                   <p className="text-emerald-100">بناء نمط حياة صحي طويل الأمد بعيدًا عن الحميات المؤقتة</p>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -222,7 +222,7 @@ export function Services() {
 
               <div className="flex items-start gap-4 justify-end">
                 <div className="text-right">
-                  <h4 className="text-xl mb-2">خطط مخصّصة</h4>
+                  <h4 className="text-lg sm:text-xl mb-2">خطط مخصّصة</h4>
                   <p className="text-emerald-100">برامج مصمّمة حسب احتياجاتك وظروفك الشخصية</p>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -232,7 +232,7 @@ export function Services() {
 
               <div className="flex items-start gap-4 justify-end">
                 <div className="text-right">
-                  <h4 className="text-xl mb-2">دعم مستمر</h4>
+                  <h4 className="text-lg sm:text-xl mb-2">دعم مستمر</h4>
                   <p className="text-emerald-100">متابعة وإشراف خطوة بخطوة لضمان أفضل النتائج</p>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">

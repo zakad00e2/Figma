@@ -17,16 +17,14 @@ export function Books() {
     >
       <div className="container mx-auto px-6 lg:px-20">
         <div className="relative">
-        <header className="mb-10 grid items-end gap-5 border-b border-stone-900/10 pb-8 md:mb-12 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.62fr)] md:pb-10">
-          <div>
-            <h2
-              id="books-heading"
-              className="max-w-2xl text-3xl leading-[1.15] tracking-[-0.035em] text-stone-900 text-balance md:text-5xl"
-            >
-              كتبٌ ترافقكِ في رحلتكِ
-            </h2>
-          </div>
-          <p className="max-w-lg text-base leading-7 text-stone-600 md:justify-self-end md:text-lg">
+        <header className="mb-10 text-center md:mb-12">
+          <h2
+            id="books-heading"
+            className="mx-auto max-w-2xl text-2xl leading-[1.15] tracking-[-0.035em] text-stone-900 text-balance sm:text-3xl md:text-5xl"
+          >
+            كتبٌ ترافقكِ في رحلتكِ
+          </h2>
+          <p className="mx-auto mt-5 max-w-lg text-base leading-7 text-stone-600 md:text-lg">
             إصداران من إعدادي، صُمّما ليكونا مرجعًا عمليًا تعودين إليه كلما احتجتِ إلى خطوة أوضح.
           </p>
         </header>
@@ -70,7 +68,7 @@ export function Books() {
 
                     <h3
                       id={`${book.id}-title`}
-                      className={`mb-3 text-2xl leading-[1.25] tracking-[-0.025em] text-stone-900 text-balance md:text-3xl lg:text-4xl ${
+                      className={`mb-3 text-xl leading-[1.25] tracking-[-0.025em] text-stone-900 text-balance sm:text-2xl md:text-3xl lg:text-4xl ${
                         book.id === "healthy-recipes" ? "whitespace-nowrap" : ""
                       }`}
                     >

@@ -55,7 +55,7 @@ export function About() {
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-5xl mb-6 text-stone-900">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6 text-stone-900">
               <span className="text-black">ميسم خلايلة</span>
             </h2>
 

@@ -60,10 +60,10 @@ export function Testimonials() {
           <div className="inline-block bg-pink-100 text-pink-700 px-4 py-2 rounded-full mb-6">
             <span className="text-sm font-medium">قصص النجاح</span>
           </div>
-          <h2 className="text-3xl md:text-5xl mb-6 text-stone-900">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6 text-stone-900">
             ماذا تقول عميلاتي؟
           </h2>
-          <p className="text-xl text-stone-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-stone-600 max-w-3xl mx-auto">
             شهادات حقيقية من نساء حوّلن حياتهن نحو الأفضل
           </p>
         </motion.div>
@@ -126,8 +126,8 @@ export function Testimonials() {
           className="mt-16 text-center"
         >
           <div className="bg-gradient-to-r from-pink-50 via-emerald-50 to-amber-50 rounded-3xl p-12">
-            <h3 className="text-3xl mb-4 text-stone-900">انضمي إلى مئات النساء اللواتي غيّرن حياتهن</h3>
-            <p className="text-xl text-stone-600 mb-8">
+            <h3 className="text-2xl sm:text-3xl mb-4 text-stone-900">انضمي إلى مئات النساء اللواتي غيّرن حياتهن</h3>
+            <p className="text-lg sm:text-xl text-stone-600 mb-8">
               رحلتك نحو الصحة والعافية تبدأ من هنا
             </p>
             <div className="flex items-center justify-center gap-4">
