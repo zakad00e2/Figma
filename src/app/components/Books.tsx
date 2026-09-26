@@ -21,7 +21,7 @@ export function Books() {
           <div>
             <h2
               id="books-heading"
-              className="max-w-2xl text-4xl leading-[1.15] tracking-[-0.035em] text-stone-900 text-balance md:text-5xl"
+              className="max-w-2xl text-3xl leading-[1.15] tracking-[-0.035em] text-stone-900 text-balance md:text-5xl"
             >
               كتبٌ ترافقكِ في رحلتكِ
             </h2>

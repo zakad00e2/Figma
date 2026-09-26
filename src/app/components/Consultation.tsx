@@ -233,7 +233,7 @@ export function Consultation() {
               <span className="text-sm font-medium">احجزي استشارتك</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl mb-6 text-stone-900">
+            <h2 className="text-3xl md:text-5xl mb-6 text-stone-900">
               ابدئي رحلتك نحو حياة صحية اليوم
             </h2>
 

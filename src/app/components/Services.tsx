@@ -148,7 +148,7 @@ export function Services() {
           <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6">
             <span className="text-sm font-medium">خدماتي</span>
           </div>
-          <h2 className="text-4xl md:text-5xl mb-6 text-stone-900">
+          <h2 className="text-3xl md:text-5xl mb-6 text-stone-900">
             كيف أساعدكِ في رحلتك الصحية؟
           </h2>
           <p className="text-xl text-stone-600 max-w-3xl mx-auto">

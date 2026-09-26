@@ -37,7 +37,7 @@ export function Hero() {
 
       <div className="container relative z-10 mx-auto px-6 pb-16 pt-32 md:pt-24 lg:px-20 lg:pb-20 lg:pt-50">
         <div dir="rtl" className="max-w-2xl text-right lg:ml-auto">
-          <h1 className="my-6 ml-auto max-w-lg text-4xl font-bold leading-tight text-white md:my-4 md:mt-0 md:text-4xl lg:text-5xl" style={{ fontFamily: "var(--font-family-display)" }}>
+          <h1 className="mb-2 mt-6 ml-auto max-w-lg text-4xl font-bold leading-tight text-white md:mb-4 md:mt-0 md:text-4xl lg:text-5xl" style={{ fontFamily: "var(--font-family-display)" }}>
             <span className="inline-flex items-baseline gap-x-2 whitespace-nowrap">
               رحلتكِ نحو حياة{" "}
               <RotatingTextContainer

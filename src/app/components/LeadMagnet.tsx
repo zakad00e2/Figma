@@ -49,7 +49,7 @@ export function LeadMagnet() {
               <Gift className="w-10 h-10 text-white" />
             </div>
 
-            <h2 className="text-4xl md:text-5xl mb-6">
+            <h2 className="text-3xl md:text-5xl mb-6">
               احصلي على كتيبك المجاني
             </h2>
             <p className="text-xl md:text-2xl text-emerald-100 mb-12 leading-relaxed">
