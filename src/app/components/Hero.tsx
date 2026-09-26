@@ -79,18 +79,20 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="liquid-glass-card absolute bottom-8 left-6 z-10 grid w-[min(calc(100%_-_3rem),34rem)] min-h-28 grid-cols-3 rounded-[20px] px-1.5 py-1.5 shadow-xl shadow-black/20 sm:min-h-32 sm:bottom-12 sm:left-10 lg:bottom-16 lg:left-20 lg:w-[min(calc(100%_-_10rem),40rem)] lg:min-h-40">
-        <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] h-[60%] w-px -translate-x-1/2 bg-white/30 left-1/3" />
-        <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] h-[60%] w-px -translate-x-1/2 bg-white/30 left-2/3" />
-        <div className="flex flex-col items-center justify-center px-3 text-center sm:px-5 lg:px-6">
+      <div className="liquid-glass-card absolute bottom-8 left-6 z-10 flex w-[min(calc(100%_-_3rem),34rem)] min-h-28 items-center justify-center gap-1 rounded-[20px] px-2 py-1.5 shadow-xl shadow-black/20 sm:grid sm:min-h-32 sm:grid-cols-3 sm:gap-0 sm:px-1.5 sm:bottom-12 sm:left-10 lg:bottom-16 lg:left-20 lg:w-[min(calc(100%_-_10rem),40rem)] lg:min-h-40">
+        <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] hidden h-[60%] w-px -translate-x-1/2 bg-white/30 sm:block left-1/3" />
+        <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] hidden h-[60%] w-px -translate-x-1/2 bg-white/30 sm:block left-2/3" />
+        <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1 text-center sm:flex-none sm:px-5 lg:px-6">
           <TextReveal text="+500" direction="ltr" split="char" stagger={0.05} delay={0.9} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
           <TextReveal text="عميلة سعيدة" direction="rtl" stagger={0.06} delay={1.05} className="text-center text-xs text-white sm:text-sm lg:text-base" />
         </div>
-        <div className="flex flex-col items-center justify-center px-3 text-center sm:px-5 lg:px-6">
+        <span aria-hidden="true" className="h-[60%] w-px shrink-0 bg-white/30 sm:hidden" />
+        <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1 text-center sm:flex-none sm:px-5 lg:px-6">
           <TextReveal text="+3" direction="ltr" split="char" stagger={0.05} delay={1.05} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
           <TextReveal text="سنوات خبرة" direction="rtl" stagger={0.06} delay={1.2} className="text-center text-xs text-white sm:text-sm lg:text-base" />
         </div>
-        <div className="flex flex-col items-center justify-center px-3 text-center sm:px-5 lg:px-6">
+        <span aria-hidden="true" className="h-[60%] w-px shrink-0 bg-white/30 sm:hidden" />
+        <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1 text-center sm:flex-none sm:px-5 lg:px-6">
           <TextReveal text="100%" direction="ltr" split="char" stagger={0.05} delay={1.2} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
           <TextReveal text="التزام بنجاحك" direction="rtl" stagger={0.06} delay={1.35} className="text-center text-xs text-white sm:text-sm lg:text-base" />
         </div>
