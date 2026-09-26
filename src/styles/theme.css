@@ -66,9 +66,7 @@
   z-index: -1;
   border-radius: 20px;
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
   filter: url(#glass-distortion);
-  -webkit-filter: url(#glass-distortion);
   isolation: isolate;
   pointer-events: none;
 }
