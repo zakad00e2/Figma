@@ -23,7 +23,7 @@ export function About() {
                 <img
                   src="/about-maysam.jpg"
                   alt="المدربة ميسم - استشارية تغذية ومدربة رياضة متخصصة في صحة المرأة"
-                  className="w-full h-[650px] object-cover object-top"
+                  className="w-full h-[650px] object-cover object-[center_25%]"
                   loading="lazy"
                   decoding="async"
                   width="600"
