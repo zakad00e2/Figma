@@ -33,9 +33,9 @@ export function About() {
               <div
                 data-about-founder-label
                 dir="rtl"
-                className="pointer-events-none absolute bottom-4 right-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-base text-stone-800 sm:bottom-5 sm:right-5"
+                className="pointer-events-none absolute bottom-4 right-4 flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm text-stone-800 sm:bottom-5 sm:right-5"
               >
-                <span className="size-3 shrink-0 bg-emerald-500 rounded-full animate-pulse motion-reduce:animate-none shadow-[0_0_0_4px_rgba(16,185,129,0.12)]" aria-hidden="true" />
+                <span className="size-2.5 shrink-0 bg-emerald-500 rounded-full animate-pulse motion-reduce:animate-none shadow-[0_0_0_3px_rgba(16,185,129,0.12)]" aria-hidden="true" />
                 <span>ابدئي معي الآن</span>
               </div>
             </div>
