@@ -60,9 +60,9 @@ export function Hero() {
               href="#consultation"
               onClick={(event) => handleSectionLinkClick(event, "consultation")}
               style={{ fontFeatureSettings: "'ss01', 'cv11'" }}
-              className="inline-flex min-h-12 flex-[2] items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 text-sm font-medium text-white shadow-lg shadow-emerald-950/25 transition-colors hover:bg-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300 sm:flex-none sm:px-6 sm:text-base"
+              className="inline-flex min-h-10 w-fit shrink-0 items-center justify-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-2 text-xs font-medium text-white shadow-lg shadow-emerald-950/25 transition-colors hover:bg-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300 sm:min-h-12 sm:gap-2 sm:rounded-xl sm:px-6 sm:py-0 sm:text-base"
             >
-              <svg className="size-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg className="size-4 sm:size-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M6 2C6 1.44772 6.44772 1 7 1C7.55228 1 8 1.44772 8 2V3H16V2C16 1.44772 16.4477 1 17 1C17.5523 1 18 1.44772 18 2V3H19C20.6569 3 22 4.34315 22 6V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V6C2 4.34315 3.34315 3 5 3H6V2ZM16 5V6C16 6.55228 16.4477 7 17 7C17.5523 7 18 6.55228 18 6V5H19C19.5523 5 20 5.44772 20 6V9H4V6C4 5.44772 4.44772 5 5 5H6V6C6 6.55228 6.44772 7 7 7C7.55228 7 8 6.55228 8 6V5H16ZM4 11V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V11H4Z" fill="currentColor" />
               </svg>
               احجزي استشارة
@@ -86,12 +86,12 @@ export function Hero() {
           <TextReveal text="+500" direction="ltr" split="char" stagger={0.05} delay={0.9} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
           <TextReveal text="عميلة سعيدة" direction="rtl" stagger={0.06} delay={1.05} className="text-center text-xs text-white sm:text-sm lg:text-base" />
         </div>
-        <span aria-hidden="true" className="h-[60%] w-px shrink-0 bg-white/30 sm:hidden" />
+        <span aria-hidden="true" className="my-auto h-14 w-px shrink-0 bg-white/30 sm:hidden" />
         <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1 text-center sm:flex-none sm:px-5 lg:px-6">
           <TextReveal text="+3" direction="ltr" split="char" stagger={0.05} delay={1.05} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
           <TextReveal text="سنوات خبرة" direction="rtl" stagger={0.06} delay={1.2} className="text-center text-xs text-white sm:text-sm lg:text-base" />
         </div>
-        <span aria-hidden="true" className="h-[60%] w-px shrink-0 bg-white/30 sm:hidden" />
+        <span aria-hidden="true" className="my-auto h-14 w-px shrink-0 bg-white/30 sm:hidden" />
         <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1 text-center sm:flex-none sm:px-5 lg:px-6">
           <TextReveal text="100%" direction="ltr" split="char" stagger={0.05} delay={1.2} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[4.25rem]" />
           <TextReveal text="التزام بنجاحك" direction="rtl" stagger={0.06} delay={1.35} className="text-center text-xs text-white sm:text-sm lg:text-base" />
