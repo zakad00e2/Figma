@@ -63,19 +63,19 @@ export function Testimonials() {
           <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6 text-stone-900">
             ماذا تقول عميلاتي؟
           </h2>
-          <p className="text-lg sm:text-xl text-stone-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-stone-600 max-w-3xl mx-auto">
             شهادات حقيقية من نساء حوّلن حياتهن نحو الأفضل
           </p>
         </motion.div>
 
         {/* Testimonials Carousel */}
-        <div className="testimonial-carousel-edge relative overflow-hidden" aria-label="آراء العملاء المتحركة">
+        <div className="testimonial-carousel-edge relative overflow-hidden px-6" aria-label="آراء العملاء المتحركة">
           <div className="testimonial-marquee flex w-max gap-4">
             {carouselTestimonials.map((testimonial, index) => (
               <article
                 key={`${testimonial.name}-${index}`}
                 aria-hidden={index >= testimonials.length}
-                className="w-[min(88vw,23rem)] shrink-0"
+                className="w-[min(calc(100vw-6rem),19rem)] sm:w-[min(88vw,23rem)] shrink-0"
               >
                 <Card className="h-full border-2 border-stone-100 transition-all duration-300 hover:border-emerald-200 hover:shadow-xl">
                   <CardContent className="flex h-full flex-col p-5 text-right">
@@ -113,8 +113,8 @@ export function Testimonials() {
               </article>
             ))}
           </div>
-          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 start-0 z-20 w-16 bg-gradient-to-r from-white via-white/80 to-transparent" />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 end-0 z-20 w-16 bg-gradient-to-l from-white via-white/80 to-transparent" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 start-0 z-20 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 end-0 z-20 w-6 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent" />
         </div>
 
         {/* Trust Banner */}

@@ -237,7 +237,7 @@ export function Consultation() {
               ابدئي رحلتك نحو حياة صحية اليوم
             </h2>
 
-                <p className="text-lg sm:text-xl text-stone-600 mb-8 leading-relaxed">
+                <p className="text-base sm:text-xl text-stone-600 mb-8 leading-relaxed">
                   احجزي استشارة مجانية مدتها 15 دقيقة لمناقشة أهدافك الصحية وكيف يمكنني مساعدتك
                 </p>
 

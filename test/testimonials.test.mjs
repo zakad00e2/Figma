@@ -38,3 +38,11 @@ test('keeps the carousel edges visually faded to indicate more client stories', 
   assert.match(testimonials, /from-white via-white\/80 to-transparent/);
   assert.match(testimonials, /bg-gradient-to-l/);
 });
+
+test('keeps a complete testimonial card visible between the mobile edge fades', () => {
+  assert.match(testimonials, /className="testimonial-carousel-edge relative overflow-hidden px-6"/);
+  assert.match(testimonials, /className="testimonial-marquee flex w-max gap-4"/);
+  assert.match(testimonials, /w-\[min\(calc\(100vw-6rem\),19rem\)\] sm:w-\[min\(88vw,23rem\)\]/);
+  assert.match(testimonials, /w-6 sm:w-16 bg-gradient-to-r/);
+  assert.match(testimonials, /w-6 sm:w-16 bg-gradient-to-l/);
+});

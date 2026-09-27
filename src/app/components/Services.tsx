@@ -151,7 +151,7 @@ export function Services() {
           <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6 text-stone-900">
             كيف أساعدكِ في رحلتك الصحية؟
           </h2>
-          <p className="text-lg sm:text-xl text-stone-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-stone-600 max-w-3xl mx-auto">
             أقدم لكِ نهجاً شاملاً يجمع بين الخبرة الطبية والتدريب الرياضي والتغذية السليمة، 
             مصمم خصيصاً لاحتياجاتك الفريدة
           </p>

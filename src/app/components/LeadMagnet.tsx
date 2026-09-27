@@ -52,7 +52,7 @@ export function LeadMagnet() {
             <h2 className="text-2xl sm:text-3xl md:text-5xl mb-6">
               احصلي على كتيبك المجاني
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-emerald-100 mb-12 leading-relaxed">
+            <p className="text-base sm:text-xl md:text-2xl text-emerald-100 mb-12 leading-relaxed">
               "دليل التغذية والنشاط البدني للحامل والمرضع" - كتيب شامل بصيغة PDF يحتوي على نصائح 
               طبية، خطط غذائية، وتمارين آمنة
             </p>
