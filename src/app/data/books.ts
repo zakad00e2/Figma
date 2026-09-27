@@ -58,6 +58,6 @@ export const books: Book[] = [
 ];
 
 export function getBookOrderUrl(book: Book) {
-  const message = `مرحباً ميسم، أرغب بطلب «${book.title}». أود معرفة السعر وطريقة الاستلام، شكراً لكِ.`;
+  const message = `مرحباً ميسم، أرغب بطلب «${book.title}». شكراً لكِ.`;
   return `https://wa.me/${BOOKS_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }

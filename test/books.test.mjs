@@ -89,3 +89,14 @@ test("constrains book details to the viewport so its content can scroll", async 
   assert.match(source, /data-lenis-prevent[\s\S]*min-h-0 overflow-y-auto/);
   assert.match(source, /أرسلي الرسالة للدفع وتنسيق طريقة الاستلام/);
 });
+
+test("prepares a concise WhatsApp order message without asking for the price", async (t) => {
+  const server = await createServer({ server: { middlewareMode: true, hmr: false } });
+  t.after(() => server.close());
+
+  const { books, getBookOrderUrl } = await server.ssrLoadModule("/src/app/data/books.ts");
+  const orderUrl = new URL(getBookOrderUrl(books[0]));
+
+  assert.equal(orderUrl.searchParams.get("text"), "مرحباً ميسم، أرغب بطلب «RESET». شكراً لكِ.");
+  assert.doesNotMatch(orderUrl.searchParams.get("text"), /السعر|الاستلام/);
+});
