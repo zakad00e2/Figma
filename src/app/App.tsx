@@ -24,6 +24,7 @@ function SectionFallback() {
 
 export default function App() {
   const [path, setPath] = useState(window.location.pathname);
+  const [isOpeningComplete, setIsOpeningComplete] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -121,10 +122,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <OpeningSequence />
+      <OpeningSequence onExitComplete={() => setIsOpeningComplete(true)} />
       <Navbar />
       <main ref={mainRef}>
-        <Hero />
+        <Hero effectsEnabled={isOpeningComplete} />
         <Suspense fallback={<SectionFallback />}>
           <About />
         </Suspense>

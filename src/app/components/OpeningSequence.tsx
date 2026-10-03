@@ -1,7 +1,11 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
-export function OpeningSequence() {
+type OpeningSequenceProps = {
+  onExitComplete: () => void;
+};
+
+export function OpeningSequence({ onExitComplete }: OpeningSequenceProps) {
   const prefersReducedMotion = useReducedMotion();
   const [isVisible, setIsVisible] = useState(true);
 
@@ -23,7 +27,7 @@ export function OpeningSequence() {
   }, [isVisible, prefersReducedMotion]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onExitComplete}>
       {isVisible && (
         <motion.div
           aria-label="الهوية الافتتاحية لموقع ميسم خلايلة"
@@ -31,11 +35,11 @@ export function OpeningSequence() {
           exit={{ opacity: 0, scale: 1.035 }}
           initial={{ opacity: 1 }}
           role="status"
-          transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.65, ease: [0.76, 0, 0.24, 1] }}
         >
           <div className="relative flex flex-col items-center text-center" dir="rtl">
             <motion.div
-              className="h-20 w-20 bg-[#059669] sm:h-24 sm:w-24"
+              className="h-16 w-16 bg-[#059669] sm:h-18 sm:w-18"
               initial={{ opacity: 0, rotate: -8, scale: 0.7, y: 18 }}
               animate={{ opacity: 1, rotate: 0, scale: 1, y: 0 }}
               style={{
@@ -52,12 +56,12 @@ export function OpeningSequence() {
             />
 
             <motion.div
-              className="mt-3 overflow-hidden pb-3"
+              className="mt-2 overflow-hidden pb-2"
               initial="hidden"
               animate="visible"
             >
               <motion.p
-                className="font-[var(--font-family-display)] text-2xl font-bold leading-[1.35] tracking-[0.04em] text-black sm:text-3xl"
+                className="font-[var(--font-family-display)] text-xl font-bold leading-[1.35] tracking-[0.04em] text-black sm:text-2xl"
                 style={{ fontFamily: "'Thmanyah Display', serif" }}
                 variants={{
                   hidden: { opacity: 0, y: "105%" },

@@ -1,6 +1,29 @@
 import { TextReveal } from "./TextReveal";
 import { RotatingText, RotatingTextContainer } from "./animate-ui/primitives/texts/rotating";
+import { motion, useReducedMotion } from "motion/react";
 import type { MouseEvent } from "react";
+
+const HERO_TITLE_WORDS = ["رحلتكِ", "نحو", "حياة"];
+
+function HeroTitleReveal() {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <span className="inline-flex overflow-hidden">
+      {HERO_TITLE_WORDS.map((word, index) => (
+        <motion.span
+          key={word}
+          className="inline-block will-change-transform"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: "70%", filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.55, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {word}{index < HERO_TITLE_WORDS.length - 1 ? "\u00A0" : ""}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
 
 function handleSectionLinkClick(event: MouseEvent<HTMLAnchorElement>, targetId: string) {
   event.preventDefault();
@@ -18,7 +41,11 @@ function handleSectionLinkClick(event: MouseEvent<HTMLAnchorElement>, targetId: 
   });
 }
 
-export function Hero() {
+type HeroProps = {
+  effectsEnabled?: boolean;
+};
+
+export function Hero({ effectsEnabled = true }: HeroProps) {
   return (
     <section aria-label="القسم الرئيسي" className="hero-viewport relative isolate flex min-h-screen items-start overflow-hidden bg-stone-950">
       <img
@@ -35,11 +62,12 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-l from-stone-950/70 via-stone-950/35 to-transparent" />
       <div className="absolute inset-0 bg-stone-950/15 lg:hidden" />
 
-      <div className="container relative z-10 mx-auto px-6 pb-16 pt-32 md:pt-24 lg:px-20 lg:pb-20 lg:pt-50">
-        <div dir="rtl" className="max-w-2xl text-right lg:ml-auto">
+      {effectsEnabled && <>
+        <div className="container relative z-10 mx-auto px-6 pb-16 pt-32 md:pt-24 lg:px-20 lg:pb-20 lg:pt-50">
+          <div dir="rtl" className="max-w-2xl text-right lg:ml-auto">
           <h1 className="mb-2 mt-6 ml-auto max-w-lg text-3xl font-bold leading-tight text-white sm:text-4xl md:mb-4 md:mt-0 md:text-4xl lg:text-5xl" style={{ fontFamily: "var(--font-family-display)" }}>
             <span className="inline-flex items-baseline gap-x-2 whitespace-nowrap">
-              رحلتكِ نحو حياة{" "}
+              <HeroTitleReveal />
               <RotatingTextContainer
                 delay={500}
                 y={-50}
@@ -75,10 +103,10 @@ export function Hero() {
               اطلبي كتبي
             </a>
           </div>
+          </div>
         </div>
-      </div>
 
-      <div className="liquid-glass-card absolute inset-x-3 bottom-8 z-10 flex w-auto min-h-28 items-center justify-evenly gap-0 rounded-[20px] px-2 py-1.5 shadow-xl shadow-black/20 sm:inset-x-auto sm:bottom-12 sm:left-10 sm:grid sm:w-[min(calc(100%_-_3rem),34rem)] sm:min-h-32 sm:grid-cols-3 sm:justify-items-stretch sm:px-1.5 lg:bottom-16 lg:left-20 lg:w-[min(calc(100%_-_10rem),36rem)] lg:min-h-32">
+        <div className="liquid-glass-card absolute inset-x-3 bottom-8 z-10 flex w-auto min-h-28 items-center justify-evenly gap-0 rounded-[20px] px-2 py-1.5 shadow-xl shadow-black/20 sm:inset-x-auto sm:bottom-12 sm:left-10 sm:grid sm:w-[min(calc(100%_-_3rem),34rem)] sm:min-h-32 sm:grid-cols-3 sm:justify-items-stretch sm:px-1.5 lg:bottom-16 lg:left-20 lg:w-[min(calc(100%_-_10rem),36rem)] lg:min-h-32">
         <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] hidden h-[60%] w-px -translate-x-1/2 bg-white/30 sm:block left-1/3" />
         <span aria-hidden="true" className="liquid-glass-divider absolute top-[20%] hidden h-[60%] w-px -translate-x-1/2 bg-white/30 sm:block left-2/3" />
         <div className="flex shrink-0 flex-col items-center justify-center px-0.5 text-center sm:px-5 lg:px-5">
@@ -95,7 +123,8 @@ export function Hero() {
           <TextReveal text="100%" direction="ltr" split="char" stagger={0.05} delay={1.2} className="text-[2.5rem] font-light text-amber-300 sm:text-6xl lg:text-[3.5rem]" />
           <TextReveal text="التزام بنجاحك" direction="rtl" stagger={0.06} delay={1.35} className="text-center text-xs text-white sm:text-sm" />
         </div>
-      </div>
+        </div>
+      </>}
 
     </section>
   );
