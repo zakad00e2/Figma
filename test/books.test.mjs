@@ -42,7 +42,7 @@ test("presents the supplied programme and recipe book with their real scope", as
   assert.match(markup, /<h3 id="reset-title"[^>]*text-2xl[^>]*md:text-3xl[^>]*lg:text-4xl/);
   assert.match(markup, /<h3 id="healthy-recipes-title"[^>]*whitespace-nowrap/);
   assert.match(markup, /src="\/book-covers\/reset.png"/);
-  assert.match(markup, /src="\/book-covers\/healthy-recipes.png"/);
+  assert.match(markup, /src="\/book-covers\/healthy-recipes.jpeg"/);
 });
 
 test("displays the book features side by side when the viewport has room", async (t) => {

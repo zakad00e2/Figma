@@ -52,7 +52,7 @@ export const books: Book[] = [
     ],
     audience:
       "لمن تبحث عن وصفات صحية سهلة ومتنوعة تساعدها على تجهيز وجباتها اليومية بثقة ومرونة.",
-    coverImage: "/book-covers/healthy-recipes.png",
+    coverImage: "/book-covers/healthy-recipes.jpeg",
     coverStyle: "sand",
   },
 ];
